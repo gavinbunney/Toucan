@@ -1,4 +1,4 @@
-![Toucan: Fabulous Image Processing in Swift](https://raw.githubusercontent.com/gavinbunney/Toucan/development/assets/toucan.png)
+![Toucan: Fabulous Image Processing in Swift](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/toucan.png)
 
 Toucan is a Swift library that provides a clean, quick API for processing images. It greatly simplifies the production of images, supporting resizing, cropping and stylizing your images.
 
@@ -62,9 +62,9 @@ FitMode drives the resizing process to determine what to do with an image to mak
 
 Example | Mode
 ---- | ---------
-![Clip](https://raw.githubusercontent.com/gavinbunney/Toucan/development/assets/examples/Resize-Clip.jpg)|**Clip Mode**<br/>`Toucan.Resize.FitMode.Crop`<br/>Resizes the image to fit within the width and height boundaries without cropping or scaling the image.<br/><br/>`Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Clip).image`
-![Crop](https://raw.githubusercontent.com/gavinbunney/Toucan/development/assets/examples/Resize-Crop.jpg)|**Crop Mode**<br/>`Toucan.Resize.FitMode.Crop`<br/>Resizes the image to fill the width and height boundaries and crops any excess image data.<br/><br/>`Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Crop).image`
-![Scale](https://raw.githubusercontent.com/gavinbunney/Toucan/development/assets/examples/Resize-Scale.jpg)|**Scale Mode**<br/>`Toucan.Resize.FitMode.Scale`<br/>Scales the image to fit the constraining dimensions exactly.<br/><br/>`Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Scale).image`
+![Clip](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Resize-Clip.jpg)|**Clip Mode**<br/>`Toucan.Resize.FitMode.Crop`<br/>Resizes the image to fit within the width and height boundaries without cropping or scaling the image.<br/><br/>`Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Clip).image`
+![Crop](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Resize-Crop.jpg)|**Crop Mode**<br/>`Toucan.Resize.FitMode.Crop`<br/>Resizes the image to fill the width and height boundaries and crops any excess image data.<br/><br/>`Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Crop).image`
+![Scale](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Resize-Scale.jpg)|**Scale Mode**<br/>`Toucan.Resize.FitMode.Scale`<br/>Scales the image to fit the constraining dimensions exactly.<br/><br/>`Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Scale).image`
 
 
 ## Masking ##
@@ -75,21 +75,21 @@ Alter the original image with a mask; supports ellipse, rounded rect and image m
 
 Example | Function
 ---- | ---------
-![Ellipse Mask](https://raw.githubusercontent.com/gavinbunney/Toucan/development/assets/examples/Mask-Ellipse-Circle.jpg)|Mask the given image with an ellipse. Allows specifying an additional border to draw on the clipped image. For a circle, ensure the image width and height are equal!<br/><br/>`Toucan(image: myImage).maskWithEllipse().image`<br/>or<br/>`Toucan.Mask.maskImageWithEllipse(myImage) -> UIImage`
-![Ellipse Mask w. Border](https://raw.githubusercontent.com/gavinbunney/Toucan/development/assets/examples/Mask-Ellipse-Border.jpg)|When specifying a border width, it is draw on the clipped image.<br/><br/>`Toucan(image: myImage).maskWithEllipse(borderWidth: 10, borderColor: UIColor.yellowColor()).image`<br/>or<br/>`Toucan.Mask.maskImageWithEllipse(myImage, borderWidth: 10, borderColor: UIColor.yellowColor()) -> UIImage`
+![Ellipse Mask](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Mask-Ellipse-Circle.jpg)|Mask the given image with an ellipse. Allows specifying an additional border to draw on the clipped image. For a circle, ensure the image width and height are equal!<br/><br/>`Toucan(image: myImage).maskWithEllipse().image`<br/>or<br/>`Toucan.Mask.maskImageWithEllipse(myImage) -> UIImage`
+![Ellipse Mask w. Border](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Mask-Ellipse-Border.jpg)|When specifying a border width, it is draw on the clipped image.<br/><br/>`Toucan(image: myImage).maskWithEllipse(borderWidth: 10, borderColor: UIColor.yellowColor()).image`<br/>or<br/>`Toucan.Mask.maskImageWithEllipse(myImage, borderWidth: 10, borderColor: UIColor.yellowColor()) -> UIImage`
 
 ### Rounded Rect Mask ###
 
 Example | Function
 ---- | ---------
-![Rounded Rect Mask](https://raw.githubusercontent.com/gavinbunney/Toucan/development/assets/examples/Mask-RoundedRect.jpg)|Mask the given image with a rounded rectangle border. Allows specifying an additional border to draw on the clipped image.<br/><br/>`Toucan(image: myImage).maskWithRoundedRect(cornerRadius: 30).image`<br/>or<br/>`Toucan.Mask.maskImageWithRoundedRect(myImage, cornerRadius: 30) -> UIImage`
-![Rounded Rect Mask w. Border](https://raw.githubusercontent.com/gavinbunney/Toucan/development/assets/examples/Mask-RoundedRect-Border.jpg)|When specifying a border width, it is draw on the clipped rounded rect.<br/><br/>`Toucan(image: myImage).maskWithRoundedRect(cornerRadius: 30, borderWidth: 10, borderColor: UIColor.purpleColor()).image`<br/>or<br/>`Toucan.Mask.maskImageWithRoundedRect(myImage, cornerRadius: 30, borderWidth: 10, borderColor: UIColor.purpleColor()) -> UIImage`
+![Rounded Rect Mask](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Mask-RoundedRect.jpg)|Mask the given image with a rounded rectangle border. Allows specifying an additional border to draw on the clipped image.<br/><br/>`Toucan(image: myImage).maskWithRoundedRect(cornerRadius: 30).image`<br/>or<br/>`Toucan.Mask.maskImageWithRoundedRect(myImage, cornerRadius: 30) -> UIImage`
+![Rounded Rect Mask w. Border](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Mask-RoundedRect-Border.jpg)|When specifying a border width, it is draw on the clipped rounded rect.<br/><br/>`Toucan(image: myImage).maskWithRoundedRect(cornerRadius: 30, borderWidth: 10, borderColor: UIColor.purpleColor()).image`<br/>or<br/>`Toucan.Mask.maskImageWithRoundedRect(myImage, cornerRadius: 30, borderWidth: 10, borderColor: UIColor.purpleColor()) -> UIImage`
 
 ### Image Mask ###
 
 Example | Function
 ---- | ---------
-![Image Mask](https://raw.githubusercontent.com/gavinbunney/Toucan/development/assets/examples/Mask-Custom.jpg)|Mask the given image with another image mask. Note that the areas in the original image that correspond to the black areas of the mask show through in the resulting image. The areas that correspond to the white areas of the mask aren’t painted. The areas that correspond to the gray areas in the mask are painted using an intermediate alpha value that’s equal to 1 minus the image mask sample value.<br/><br/>`Toucan(image: myImage).maskWithImage(maskImage: octagonMask).image`<br/>or<br/>`Toucan.Mask.maskImageWithImage(myImage, maskImage: octagonMask) -> UIImage`
+![Image Mask](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Mask-Custom.jpg)|Mask the given image with another image mask. Note that the areas in the original image that correspond to the black areas of the mask show through in the resulting image. The areas that correspond to the white areas of the mask aren’t painted. The areas that correspond to the gray areas in the mask are painted using an intermediate alpha value that’s equal to 1 minus the image mask sample value.<br/><br/>`Toucan(image: myImage).maskWithImage(maskImage: octagonMask).image`<br/>or<br/>`Toucan.Mask.maskImageWithImage(myImage, maskImage: octagonMask) -> UIImage`
 
 ---
 
