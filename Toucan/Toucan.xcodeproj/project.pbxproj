@@ -9,7 +9,10 @@
 /* Begin PBXBuildFile section */
 		740AC40419997A6E00AB9A86 /* Toucan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740AC40319997A6E00AB9A86 /* Toucan.swift */; };
 		7443A62619A05F2D005AAC05 /* ResizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7443A62519A05F2D005AAC05 /* ResizeTests.swift */; };
-		74724DF519998F9C0040117C /* Portrait.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 74724DF419998F9C0040117C /* Portrait.jpg */; };
+		7443A62819A163B2005AAC05 /* ToucanTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7443A62719A163B2005AAC05 /* ToucanTestCase.swift */; };
+		7443A62D19A1644B005AAC05 /* Landscape.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7443A62A19A1644B005AAC05 /* Landscape.jpg */; };
+		7443A62E19A1644B005AAC05 /* OctagonMask.png in Resources */ = {isa = PBXBuildFile; fileRef = 7443A62B19A1644B005AAC05 /* OctagonMask.png */; };
+		7443A62F19A1644B005AAC05 /* Portrait.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7443A62C19A1644B005AAC05 /* Portrait.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +33,10 @@
 		740AC3F81999799900AB9A86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		740AC40319997A6E00AB9A86 /* Toucan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toucan.swift; sourceTree = "<group>"; };
 		7443A62519A05F2D005AAC05 /* ResizeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizeTests.swift; sourceTree = "<group>"; };
-		74724DF419998F9C0040117C /* Portrait.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Portrait.jpg; sourceTree = "<group>"; };
+		7443A62719A163B2005AAC05 /* ToucanTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToucanTestCase.swift; sourceTree = "<group>"; };
+		7443A62A19A1644B005AAC05 /* Landscape.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Landscape.jpg; sourceTree = "<group>"; };
+		7443A62B19A1644B005AAC05 /* OctagonMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OctagonMask.png; sourceTree = "<group>"; };
+		7443A62C19A1644B005AAC05 /* Portrait.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Portrait.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,9 +96,10 @@
 		740AC3F61999799900AB9A86 /* ToucanTests */ = {
 			isa = PBXGroup;
 			children = (
-				7443A62519A05F2D005AAC05 /* ResizeTests.swift */,
-				74724DF419998F9C0040117C /* Portrait.jpg */,
+				7443A62919A1644B005AAC05 /* Assets */,
 				740AC3F71999799900AB9A86 /* Supporting Files */,
+				7443A62519A05F2D005AAC05 /* ResizeTests.swift */,
+				7443A62719A163B2005AAC05 /* ToucanTestCase.swift */,
 			);
 			path = ToucanTests;
 			sourceTree = "<group>";
@@ -103,6 +110,16 @@
 				740AC3F81999799900AB9A86 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7443A62919A1644B005AAC05 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				7443A62A19A1644B005AAC05 /* Landscape.jpg */,
+				7443A62B19A1644B005AAC05 /* OctagonMask.png */,
+				7443A62C19A1644B005AAC05 /* Portrait.jpg */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,7 +218,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74724DF519998F9C0040117C /* Portrait.jpg in Resources */,
+				7443A62F19A1644B005AAC05 /* Portrait.jpg in Resources */,
+				7443A62D19A1644B005AAC05 /* Landscape.jpg in Resources */,
+				7443A62E19A1644B005AAC05 /* OctagonMask.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7443A62619A05F2D005AAC05 /* ResizeTests.swift in Sources */,
+				7443A62819A163B2005AAC05 /* ToucanTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
