@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		740AC3FA1999799900AB9A86 /* ToucanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740AC3F91999799900AB9A86 /* ToucanTests.swift */; };
 		740AC40419997A6E00AB9A86 /* Toucan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740AC40319997A6E00AB9A86 /* Toucan.swift */; };
-		74724DF31999845B0040117C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74724DF21999845B0040117C /* Images.xcassets */; };
+		7443A62619A05F2D005AAC05 /* ResizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7443A62519A05F2D005AAC05 /* ResizeTests.swift */; };
 		74724DF519998F9C0040117C /* Portrait.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 74724DF419998F9C0040117C /* Portrait.jpg */; };
 /* End PBXBuildFile section */
 
@@ -29,9 +28,8 @@
 		740AC3EF1999799900AB9A86 /* Toucan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Toucan.h; sourceTree = "<group>"; };
 		740AC3F51999799900AB9A86 /* ToucanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToucanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		740AC3F81999799900AB9A86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		740AC3F91999799900AB9A86 /* ToucanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToucanTests.swift; sourceTree = "<group>"; };
 		740AC40319997A6E00AB9A86 /* Toucan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toucan.swift; sourceTree = "<group>"; };
-		74724DF21999845B0040117C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7443A62519A05F2D005AAC05 /* ResizeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizeTests.swift; sourceTree = "<group>"; };
 		74724DF419998F9C0040117C /* Portrait.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Portrait.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,10 +90,9 @@
 		740AC3F61999799900AB9A86 /* ToucanTests */ = {
 			isa = PBXGroup;
 			children = (
+				7443A62519A05F2D005AAC05 /* ResizeTests.swift */,
 				74724DF419998F9C0040117C /* Portrait.jpg */,
-				740AC3F91999799900AB9A86 /* ToucanTests.swift */,
 				740AC3F71999799900AB9A86 /* Supporting Files */,
-				74724DF21999845B0040117C /* Images.xcassets */,
 			);
 			path = ToucanTests;
 			sourceTree = "<group>";
@@ -205,7 +202,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				74724DF519998F9C0040117C /* Portrait.jpg in Resources */,
-				74724DF31999845B0040117C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,7 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				740AC3FA1999799900AB9A86 /* ToucanTests.swift in Sources */,
+				7443A62619A05F2D005AAC05 /* ResizeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
