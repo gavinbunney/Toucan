@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		740AC40419997A6E00AB9A86 /* Toucan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740AC40319997A6E00AB9A86 /* Toucan.swift */; };
+		7434D68519AB060D00C126D9 /* MaskingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7434D68419AB060D00C126D9 /* MaskingTests.swift */; };
 		7443A62619A05F2D005AAC05 /* ResizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7443A62519A05F2D005AAC05 /* ResizeTests.swift */; };
 		7443A62819A163B2005AAC05 /* ToucanTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7443A62719A163B2005AAC05 /* ToucanTestCase.swift */; };
 		7443A62D19A1644B005AAC05 /* Landscape.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7443A62A19A1644B005AAC05 /* Landscape.jpg */; };
@@ -32,6 +33,7 @@
 		740AC3F51999799900AB9A86 /* ToucanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToucanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		740AC3F81999799900AB9A86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		740AC40319997A6E00AB9A86 /* Toucan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toucan.swift; sourceTree = "<group>"; };
+		7434D68419AB060D00C126D9 /* MaskingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskingTests.swift; sourceTree = "<group>"; };
 		7443A62519A05F2D005AAC05 /* ResizeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizeTests.swift; sourceTree = "<group>"; };
 		7443A62719A163B2005AAC05 /* ToucanTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToucanTestCase.swift; sourceTree = "<group>"; };
 		7443A62A19A1644B005AAC05 /* Landscape.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Landscape.jpg; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				7443A62919A1644B005AAC05 /* Assets */,
 				740AC3F71999799900AB9A86 /* Supporting Files */,
 				7443A62519A05F2D005AAC05 /* ResizeTests.swift */,
+				7434D68419AB060D00C126D9 /* MaskingTests.swift */,
 				7443A62719A163B2005AAC05 /* ToucanTestCase.swift */,
 			);
 			path = ToucanTests;
@@ -240,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7443A62619A05F2D005AAC05 /* ResizeTests.swift in Sources */,
+				7434D68519AB060D00C126D9 /* MaskingTests.swift in Sources */,
 				7443A62819A163B2005AAC05 /* ToucanTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,7 +294,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -331,7 +335,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
