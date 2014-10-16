@@ -34,18 +34,15 @@ let resizedImage = Toucan.resize(myImage, size: CGSize(width: 100, height: 150))
 Or create an instance for easy method chaining:
 let resizedAndMaskedImage = Toucan(withImage: myImage).resize(CGSize(width: 100, height: 150)).maskWithEllipse().image
 */
-public class Toucan {
+public class Toucan : NSObject {
     
     public var image : UIImage
     
     public init(image withImage: UIImage) {
         self.image = withImage
     }
-}
 
-// MARK: - Resize
-
-extension Toucan {
+    // MARK: - Resize
     
     /**
     Resize the contained image to the specified size. Depending on what fitMode is supplied, the image
@@ -134,12 +131,9 @@ extension Toucan {
             }
         }
     }
-}
 
-// MARK: - Mask
+    // MARK: - Mask
 
-extension Toucan {
-    
     /**
     Mask the contained image with another image mask.
     Note that the areas in the original image that correspond to the black areas of the mask
@@ -304,11 +298,6 @@ extension Toucan {
                 }
         }
     }
-}
-
-// MARK: - Util
-
-extension Toucan {
     
     /**
     Container struct for internally used utility functions.
