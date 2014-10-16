@@ -34,8 +34,7 @@ let resizedImage = Toucan.resize(myImage, size: CGSize(width: 100, height: 150))
 Or create an instance for easy method chaining:
 let resizedAndMaskedImage = Toucan(withImage: myImage).resize(CGSize(width: 100, height: 150)).maskWithEllipse().image
 */
-@objc
-public class Toucan {
+public class Toucan : NSObject {
     
     public var image : UIImage
     
