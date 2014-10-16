@@ -34,7 +34,8 @@ let resizedImage = Toucan.resize(myImage, size: CGSize(width: 100, height: 150))
 Or create an instance for easy method chaining:
 let resizedAndMaskedImage = Toucan(withImage: myImage).resize(CGSize(width: 100, height: 150)).maskWithEllipse().image
 */
-public class Toucan : NSObject {
+@objc
+public class Toucan {
     
     public var image : UIImage
     
@@ -57,6 +58,55 @@ public class Toucan : NSObject {
     */
     public func resize(size: CGSize, fitMode: Toucan.Resize.FitMode = .Clip) -> Toucan {
         self.image = Toucan.Resize.resizeImage(self.image, size: size, fitMode: fitMode)
+        return self
+    }
+    
+    /**
+    Resize the contained image to the specified size by resizing the image to fit
+    within the width and height boundaries without cropping or scaling the image.
+    
+    The current image on this toucan instance is replaced with the resized image.
+    
+    :param: size    Size to resize the image to
+    
+    :returns: Self, allowing method chaining
+    */
+    @objc
+    public func resizeByClipping(size: CGSize) -> Toucan {
+        self.image = Toucan.Resize.resizeImage(self.image, size: size, fitMode: .Clip)
+        return self
+    }
+    
+    /**
+    Resize the contained image to the specified size by resizing the image to fill the
+    width and height boundaries and crops any excess image data.
+    The resulting image will match the width and height constraints without scaling the image.
+    
+    The current image on this toucan instance is replaced with the resized image.
+    
+    :param: size    Size to resize the image to
+    
+    :returns: Self, allowing method chaining
+    */
+    @objc
+    public func resizeByCropping(size: CGSize) -> Toucan {
+        self.image = Toucan.Resize.resizeImage(self.image, size: size, fitMode: .Crop)
+        return self
+    }
+    
+    /**
+    Resize the contained image to the specified size by scaling the image to fit the
+    constraining dimensions exactly.
+    
+    The current image on this toucan instance is replaced with the resized image.
+    
+    :param: size    Size to resize the image to
+    
+    :returns: Self, allowing method chaining
+    */
+    @objc
+    public func resizeByScaling(size: CGSize) -> Toucan {
+        self.image = Toucan.Resize.resizeImage(self.image, size: size, fitMode: .Scale)
         return self
     }
     
