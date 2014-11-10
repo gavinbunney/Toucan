@@ -39,22 +39,22 @@ let octagonMask = UIImage(named: "OctagonMask.png")
 // ------------------------------------------------------------
 
 // Crop will resize to fit one dimension, then crop the other
-Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Crop).image
+Toucan(image: portraitImage!).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Crop).image
 
 // Clip will resize so one dimension is equal to the size, the other shrunk down to retain aspect ratio
-Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Clip).image
+Toucan(image: portraitImage!).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Clip).image
 
 // Scale will resize so the image fits exactly, altering the aspect ratio
-Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Scale).image
+Toucan(image: portraitImage!).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Scale).image
 
 // ------------------------------------------------------------
 // Masking
 // ------------------------------------------------------------
 
-let landscapeCropped = Toucan(image: landscapeImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Crop).image
+let landscapeCropped = Toucan(image: landscapeImage!).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Crop).image
 
 // We can mask with an ellipse!
-Toucan(image: landscapeImage).maskWithEllipse().image
+Toucan(image: landscapeImage!).maskWithEllipse().image
 
 // Demonstrate creating a circular mask -> resizes to a square image then mask with an ellipse
 Toucan(image: landscapeCropped).maskWithEllipse().image
@@ -69,6 +69,16 @@ Toucan(image: landscapeCropped).maskWithRoundedRect(cornerRadius: 30).image
 Toucan(image: landscapeCropped).maskWithRoundedRect(cornerRadius: 30, borderWidth: 10, borderColor: UIColor.purpleColor()).image
 
 // Masking with an custom image mask
-Toucan(image: landscapeCropped).maskWithImage(maskImage: octagonMask).image
+Toucan(image: landscapeCropped).maskWithImage(maskImage: octagonMask!).image
+
+
+// ------------------------------------------------------------
+// Layers
+// ------------------------------------------------------------
+
+// We can draw ontop of another image
+Toucan(image: portraitImage!).layerWithOverlayImage(octagonMask!, overlayFrame: CGRectMake(450, 400, 200, 200)).image
+
+
 
 

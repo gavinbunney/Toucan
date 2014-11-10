@@ -348,6 +348,52 @@ public class Toucan : NSObject {
         }
     }
     
+    // MARK: - Layer
+    
+    /**
+    Overlay an image ontop of the current image.
+    
+    :param: image        Image to be on the bottom layer
+    :param: overlayImage Image to be on the top layer, i.e. drawn on top of image
+    :param: overlayFrame Frame of the overlay image
+
+    :returns: Self, allowing method chaining
+    */
+    public func layerWithOverlayImage(overlayImage: UIImage, overlayFrame: CGRect) -> Toucan {
+        self.image = Toucan.Layer.overlayImage(self.image, overlayImage:overlayImage, overlayFrame:overlayFrame)
+        return self
+    }
+    
+    /**
+    Container struct for all things Layer related
+    */
+    public struct Layer {
+        
+        /**
+        Overlay the given image into a new layout ontop of the image.
+        
+        :param: image        Image to be on the bottom layer
+        :param: overlayImage Image to be on the top layer, i.e. drawn on top of image
+        :param: overlayFrame Frame of the overlay image
+        
+        :returns: Masked image
+        */
+        public static func overlayImage(image: UIImage, overlayImage: UIImage, overlayFrame: CGRect) -> UIImage {
+
+            let imgRef = Util.CGImageWithCorrectOrientation(image)
+            let overlayRef = Util.CGImageWithCorrectOrientation(overlayImage)
+            let size = CGSize(width: CGFloat(CGImageGetWidth(imgRef)) / image.scale, height: CGFloat(CGImageGetHeight(imgRef)) / image.scale)
+            
+            return Util.drawImageWithClosure(size: size) { (size: CGSize, context: CGContext) -> () in
+                
+                let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+                
+                image.drawInRect(rect)
+                overlayImage.drawInRect(overlayFrame);
+            }
+        }
+    }
+    
     /**
     Container struct for internally used utility functions.
     */
