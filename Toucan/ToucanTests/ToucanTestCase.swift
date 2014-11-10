@@ -25,16 +25,16 @@ class ToucanTestCase : XCTestCase {
 
     internal var portraitImage : UIImage {
         let imageData = NSData(contentsOfURL: NSBundle(forClass: ToucanTestCase.self).URLForResource("Portrait", withExtension: "jpg")!)
-        let image = UIImage(data: imageData)
-        XCTAssertEqual(image.size, CGSize(width: 1593, height: 2161), "Verify portrait image size")
-        return image
+        let image = UIImage(data: imageData!)
+        XCTAssertEqual(image!.size, CGSize(width: 1593, height: 2161), "Verify portrait image size")
+        return image!
     }
     
     internal var landscapeImage : UIImage {
         let imageData = NSData(contentsOfURL: NSBundle(forClass: ToucanTestCase.self).URLForResource("Landscape", withExtension: "jpg")!)
-        let image = UIImage(data: imageData)
-        XCTAssertEqual(image.size, CGSize(width: 3872, height: 2592), "Verify landscape image size")
-        return image
+        let image = UIImage(data: imageData!)
+        XCTAssertEqual(image!.size, CGSize(width: 3872, height: 2592), "Verify landscape image size")
+        return image!
     }
 
     internal func getPixelRGBA(image: UIImage, point: CGPoint) -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
