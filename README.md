@@ -62,7 +62,7 @@ FitMode drives the resizing process to determine what to do with an image to mak
 
 Example | Mode
 ---- | ---------
-![Clip](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Resize-Clip.jpg)|**Clip Mode**<br/>`Toucan.Resize.FitMode.Crop`<br/>Resizes the image to fit within the width and height boundaries without cropping or distorting the image.<br/><br/>`Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Clip).image`
+![Clip](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Resize-Clip.jpg)|**Clip Mode**<br/>`Toucan.Resize.FitMode.Clip`<br/>Resizes the image to fit within the width and height boundaries without cropping or distorting the image.<br/><br/>`Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Clip).image`
 ![Crop](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Resize-Crop.jpg)|**Crop Mode**<br/>`Toucan.Resize.FitMode.Crop`<br/>Resizes the image to fill the width and height boundaries and crops any excess image data.<br/><br/>`Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Crop).image`
 ![Scale](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Resize-Scale.jpg)|**Scale Mode**<br/>`Toucan.Resize.FitMode.Scale`<br/>Scales the image to fit the constraining dimensions exactly.<br/><br/>`Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Scale).image`
 
