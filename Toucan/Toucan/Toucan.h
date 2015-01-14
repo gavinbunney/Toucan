@@ -27,7 +27,3 @@ FOUNDATION_EXPORT double ToucanVersionNumber;
 
 //! Project version string for Toucan.
 FOUNDATION_EXPORT const unsigned char ToucanVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <Toucan/PublicHeader.h>
-
-
