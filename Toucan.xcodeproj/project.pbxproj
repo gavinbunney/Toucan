@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		740AC40419997A6E00AB9A86 /* Toucan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740AC40319997A6E00AB9A86 /* Toucan.swift */; };
-		7434D68519AB060D00C126D9 /* MaskingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7434D68419AB060D00C126D9 /* MaskingTests.swift */; };
-		7443A62619A05F2D005AAC05 /* ResizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7443A62519A05F2D005AAC05 /* ResizeTests.swift */; };
-		7443A62819A163B2005AAC05 /* ToucanTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7443A62719A163B2005AAC05 /* ToucanTestCase.swift */; };
-		7443A62D19A1644B005AAC05 /* Landscape.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7443A62A19A1644B005AAC05 /* Landscape.jpg */; };
-		7443A62E19A1644B005AAC05 /* OctagonMask.png in Resources */ = {isa = PBXBuildFile; fileRef = 7443A62B19A1644B005AAC05 /* OctagonMask.png */; };
-		7443A62F19A1644B005AAC05 /* Portrait.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7443A62C19A1644B005AAC05 /* Portrait.jpg */; };
+		74FBD0DF1A66512A009B7BC5 /* Toucan.h in Headers */ = {isa = PBXBuildFile; fileRef = 74FBD0DD1A66512A009B7BC5 /* Toucan.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		74FBD0E01A66512A009B7BC5 /* Toucan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FBD0DE1A66512A009B7BC5 /* Toucan.swift */; };
+		74FBD0EF1A665152009B7BC5 /* MaskingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FBD0E51A665140009B7BC5 /* MaskingTests.swift */; };
+		74FBD0F01A665155009B7BC5 /* ResizeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FBD0E61A665140009B7BC5 /* ResizeTests.swift */; };
+		74FBD0F11A665158009B7BC5 /* ToucanTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FBD0E71A665140009B7BC5 /* ToucanTestCase.swift */; };
+		74FBD0F21A66515F009B7BC5 /* Portrait.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 74FBD0E41A665140009B7BC5 /* Portrait.jpg */; };
+		74FBD0F31A665162009B7BC5 /* OctagonMask.png in Resources */ = {isa = PBXBuildFile; fileRef = 74FBD0E31A665140009B7BC5 /* OctagonMask.png */; };
+		74FBD0F41A665164009B7BC5 /* Landscape.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 74FBD0E21A665140009B7BC5 /* Landscape.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,17 +29,17 @@
 
 /* Begin PBXFileReference section */
 		740AC3EA1999799900AB9A86 /* Toucan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Toucan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		740AC3EE1999799900AB9A86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		740AC3EF1999799900AB9A86 /* Toucan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Toucan.h; sourceTree = "<group>"; };
 		740AC3F51999799900AB9A86 /* ToucanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToucanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		740AC3F81999799900AB9A86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		740AC40319997A6E00AB9A86 /* Toucan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toucan.swift; sourceTree = "<group>"; };
-		7434D68419AB060D00C126D9 /* MaskingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskingTests.swift; sourceTree = "<group>"; };
-		7443A62519A05F2D005AAC05 /* ResizeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResizeTests.swift; sourceTree = "<group>"; };
-		7443A62719A163B2005AAC05 /* ToucanTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToucanTestCase.swift; sourceTree = "<group>"; };
-		7443A62A19A1644B005AAC05 /* Landscape.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Landscape.jpg; sourceTree = "<group>"; };
-		7443A62B19A1644B005AAC05 /* OctagonMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OctagonMask.png; sourceTree = "<group>"; };
-		7443A62C19A1644B005AAC05 /* Portrait.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Portrait.jpg; sourceTree = "<group>"; };
+		74FBD0DD1A66512A009B7BC5 /* Toucan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Toucan.h; path = Source/Toucan.h; sourceTree = SOURCE_ROOT; };
+		74FBD0DE1A66512A009B7BC5 /* Toucan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Toucan.swift; path = Source/Toucan.swift; sourceTree = SOURCE_ROOT; };
+		74FBD0E21A665140009B7BC5 /* Landscape.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Landscape.jpg; sourceTree = "<group>"; };
+		74FBD0E31A665140009B7BC5 /* OctagonMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OctagonMask.png; sourceTree = "<group>"; };
+		74FBD0E41A665140009B7BC5 /* Portrait.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Portrait.jpg; sourceTree = "<group>"; };
+		74FBD0E51A665140009B7BC5 /* MaskingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaskingTests.swift; path = Tests/MaskingTests.swift; sourceTree = SOURCE_ROOT; };
+		74FBD0E61A665140009B7BC5 /* ResizeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResizeTests.swift; path = Tests/ResizeTests.swift; sourceTree = SOURCE_ROOT; };
+		74FBD0E71A665140009B7BC5 /* ToucanTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToucanTestCase.swift; path = Tests/ToucanTestCase.swift; sourceTree = SOURCE_ROOT; };
+		74FBD0EE1A66514E009B7BC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/Info.plist; sourceTree = SOURCE_ROOT; };
+		74FBD0F51A665178009B7BC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +63,8 @@
 		740AC3E01999799900AB9A86 = {
 			isa = PBXGroup;
 			children = (
-				740AC3EC1999799900AB9A86 /* Toucan */,
-				740AC3F61999799900AB9A86 /* ToucanTests */,
+				740AC3EC1999799900AB9A86 /* Source */,
+				740AC3F61999799900AB9A86 /* Tests */,
 				740AC3EB1999799900AB9A86 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -77,53 +78,56 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		740AC3EC1999799900AB9A86 /* Toucan */ = {
+		740AC3EC1999799900AB9A86 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				740AC3EF1999799900AB9A86 /* Toucan.h */,
-				740AC40319997A6E00AB9A86 /* Toucan.swift */,
+				74FBD0DD1A66512A009B7BC5 /* Toucan.h */,
+				74FBD0DE1A66512A009B7BC5 /* Toucan.swift */,
 				740AC3ED1999799900AB9A86 /* Supporting Files */,
 			);
+			name = Source;
 			path = Toucan;
 			sourceTree = "<group>";
 		};
 		740AC3ED1999799900AB9A86 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				740AC3EE1999799900AB9A86 /* Info.plist */,
+				74FBD0F51A665178009B7BC5 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		740AC3F61999799900AB9A86 /* ToucanTests */ = {
+		740AC3F61999799900AB9A86 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				7443A62919A1644B005AAC05 /* Assets */,
+				74FBD0E11A665140009B7BC5 /* Assets */,
+				74FBD0E51A665140009B7BC5 /* MaskingTests.swift */,
+				74FBD0E61A665140009B7BC5 /* ResizeTests.swift */,
+				74FBD0E71A665140009B7BC5 /* ToucanTestCase.swift */,
 				740AC3F71999799900AB9A86 /* Supporting Files */,
-				7443A62519A05F2D005AAC05 /* ResizeTests.swift */,
-				7434D68419AB060D00C126D9 /* MaskingTests.swift */,
-				7443A62719A163B2005AAC05 /* ToucanTestCase.swift */,
 			);
+			name = Tests;
 			path = ToucanTests;
 			sourceTree = "<group>";
 		};
 		740AC3F71999799900AB9A86 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				740AC3F81999799900AB9A86 /* Info.plist */,
+				74FBD0EE1A66514E009B7BC5 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		7443A62919A1644B005AAC05 /* Assets */ = {
+		74FBD0E11A665140009B7BC5 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				7443A62A19A1644B005AAC05 /* Landscape.jpg */,
-				7443A62B19A1644B005AAC05 /* OctagonMask.png */,
-				7443A62C19A1644B005AAC05 /* Portrait.jpg */,
+				74FBD0E21A665140009B7BC5 /* Landscape.jpg */,
+				74FBD0E31A665140009B7BC5 /* OctagonMask.png */,
+				74FBD0E41A665140009B7BC5 /* Portrait.jpg */,
 			);
-			path = Assets;
-			sourceTree = "<group>";
+			name = Assets;
+			path = Tests/Assets;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -132,6 +136,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74FBD0DF1A66512A009B7BC5 /* Toucan.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,9 +226,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7443A62F19A1644B005AAC05 /* Portrait.jpg in Resources */,
-				7443A62D19A1644B005AAC05 /* Landscape.jpg in Resources */,
-				7443A62E19A1644B005AAC05 /* OctagonMask.png in Resources */,
+				74FBD0F41A665164009B7BC5 /* Landscape.jpg in Resources */,
+				74FBD0F21A66515F009B7BC5 /* Portrait.jpg in Resources */,
+				74FBD0F31A665162009B7BC5 /* OctagonMask.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,7 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				740AC40419997A6E00AB9A86 /* Toucan.swift in Sources */,
+				74FBD0E01A66512A009B7BC5 /* Toucan.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,9 +247,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7443A62619A05F2D005AAC05 /* ResizeTests.swift in Sources */,
-				7434D68519AB060D00C126D9 /* MaskingTests.swift in Sources */,
-				7443A62819A163B2005AAC05 /* ToucanTestCase.swift in Sources */,
+				74FBD0EF1A665152009B7BC5 /* MaskingTests.swift in Sources */,
+				74FBD0F11A665158009B7BC5 /* ToucanTestCase.swift in Sources */,
+				74FBD0F01A665155009B7BC5 /* ResizeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,7 +359,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Toucan/Info.plist;
+				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -371,7 +376,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Toucan/Info.plist;
+				INFOPLIST_FILE = Source/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -390,7 +395,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = ToucanTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -403,7 +408,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = ToucanTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

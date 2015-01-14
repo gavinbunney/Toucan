@@ -5,6 +5,6 @@
       location = "group:ToucanPlayground.playground">
    </FileRef>
    <FileRef
-      location = "group:Toucan/Toucan.xcodeproj">
+      location = "group:Toucan.xcodeproj">
    </FileRef>
 </Workspace>
