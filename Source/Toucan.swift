@@ -37,7 +37,11 @@ let resizedAndMaskedImage = Toucan(withImage: myImage).resize(CGSize(width: 100,
 public class Toucan : NSObject {
     
     public var image : UIImage
-    
+
+    public init() {
+        // nothing... yet
+    }
+
     public init(image withImage: UIImage) {
         self.image = withImage
     }
