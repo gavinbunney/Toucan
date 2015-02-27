@@ -1,5 +1,7 @@
 ![Toucan: Fabulous Image Processing in Swift](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/toucan.png)
 
+[![Build Status](https://travis-ci.org/gavinbunney/Toucan.svg)](https://travis-ci.org/gavinbunney/Toucan)
+
 Toucan is a Swift library that provides a clean, quick API for processing images. It greatly simplifies the production of images, supporting resizing, cropping and stylizing your images.
 
 ## Features ##
