@@ -185,6 +185,7 @@
 		740AC3E11999799900AB9A86 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Bunney Apps";
 				TargetAttributes = {

@@ -21,6 +21,7 @@
 // THE SOFTWARE.
 
 import UIKit
+import CoreGraphics
 
 /**
 Toucan - Fabulous Image Processing in Swift.
@@ -41,7 +42,7 @@ public class Toucan : NSObject {
     public init(image withImage: UIImage) {
         self.image = withImage
     }
-
+    
     // MARK: - Resize
     
     /**
@@ -50,10 +51,10 @@ public class Toucan : NSObject {
     
     The current image on this toucan instance is replaced with the resized image.
     
-    :param: size    Size to resize the image to
-    :param: fitMode How to handle the image resizing process
+    - parameter size:    Size to resize the image to
+    - parameter fitMode: How to handle the image resizing process
     
-    :returns: Self, allowing method chaining
+    - returns: Self, allowing method chaining
     */
     public func resize(size: CGSize, fitMode: Toucan.Resize.FitMode = .Clip) -> Toucan {
         self.image = Toucan.Resize.resizeImage(self.image, size: size, fitMode: fitMode)
@@ -66,9 +67,9 @@ public class Toucan : NSObject {
     
     The current image on this toucan instance is replaced with the resized image.
     
-    :param: size    Size to resize the image to
+    - parameter size:    Size to resize the image to
     
-    :returns: Self, allowing method chaining
+    - returns: Self, allowing method chaining
     */
     @objc
     public func resizeByClipping(size: CGSize) -> Toucan {
@@ -83,9 +84,9 @@ public class Toucan : NSObject {
     
     The current image on this toucan instance is replaced with the resized image.
     
-    :param: size    Size to resize the image to
+    - parameter size:    Size to resize the image to
     
-    :returns: Self, allowing method chaining
+    - returns: Self, allowing method chaining
     */
     @objc
     public func resizeByCropping(size: CGSize) -> Toucan {
@@ -99,9 +100,9 @@ public class Toucan : NSObject {
     
     The current image on this toucan instance is replaced with the resized image.
     
-    :param: size    Size to resize the image to
+    - parameter size:    Size to resize the image to
     
-    :returns: Self, allowing method chaining
+    - returns: Self, allowing method chaining
     */
     @objc
     public func resizeByScaling(size: CGSize) -> Toucan {
@@ -148,11 +149,11 @@ public class Toucan : NSObject {
         Resize an image to the specified size. Depending on what fitMode is supplied, the image
         may be clipped, cropped or scaled. @see documentation on FitMode.
         
-        :param: image   Image to Resize
-        :param: size    Size to resize the image to
-        :param: fitMode How to handle the image resizing process
+        - parameter image:   Image to Resize
+        - parameter size:    Size to resize the image to
+        - parameter fitMode: How to handle the image resizing process
         
-        :returns: Resized image
+        - returns: Resized image
         */
         public static func resizeImage(image: UIImage, size: CGSize, fitMode: FitMode = .Clip) -> UIImage {
             
@@ -180,9 +181,9 @@ public class Toucan : NSObject {
             }
         }
     }
-
+    
     // MARK: - Mask
-
+    
     /**
     Mask the contained image with another image mask.
     Note that the areas in the original image that correspond to the black areas of the mask
@@ -190,11 +191,11 @@ public class Toucan : NSObject {
     the mask aren’t painted. The areas that correspond to the gray areas in the mask are painted
     using an intermediate alpha value that’s equal to 1 minus the image mask sample value.
     
-    :param: maskImage Image Mask to apply to the Image
+    - parameter maskImage: Image Mask to apply to the Image
     
-    :returns: Self, allowing method chaining
+    - returns: Self, allowing method chaining
     */
-    public func maskWithImage(#maskImage : UIImage)  -> Toucan {
+    public func maskWithImage(maskImage maskImage : UIImage)  -> Toucan {
         self.image = Toucan.Mask.maskImageWithImage(self.image, maskImage: maskImage)
         return self
     }
@@ -204,10 +205,10 @@ public class Toucan : NSObject {
     Allows specifying an additional border to draw on the clipped image.
     For a circle, ensure the image width and height are equal!
     
-    :param: borderWidth Optional width of the border to apply - default 0
-    :param: borderColor Optional color of the border - default White
+    - parameter borderWidth: Optional width of the border to apply - default 0
+    - parameter borderColor: Optional color of the border - default White
     
-    :returns: Self, allowing method chaining
+    - returns: Self, allowing method chaining
     */
     public func maskWithEllipse(borderWidth: CGFloat = 0, borderColor: UIColor = UIColor.whiteColor()) -> Toucan {
         self.image = Toucan.Mask.maskImageWithEllipse(self.image, borderWidth: borderWidth, borderColor: borderColor)
@@ -218,13 +219,13 @@ public class Toucan : NSObject {
     Mask the contained image with a rounded rectangle border.
     Allows specifying an additional border to draw on the clipped image.
     
-    :param: cornerRadius Radius of the rounded rect corners
-    :param: borderWidth  Optional width of border to apply - default 0
-    :param: borderColor  Optional color of the border - default White
+    - parameter cornerRadius: Radius of the rounded rect corners
+    - parameter borderWidth:  Optional width of border to apply - default 0
+    - parameter borderColor:  Optional color of the border - default White
     
-    :returns: Self, allowing method chaining
+    - returns: Self, allowing method chaining
     */
-    public func maskWithRoundedRect(#cornerRadius: CGFloat, borderWidth: CGFloat = 0, borderColor: UIColor = UIColor.whiteColor()) -> Toucan {
+    public func maskWithRoundedRect(cornerRadius cornerRadius: CGFloat, borderWidth: CGFloat = 0, borderColor: UIColor = UIColor.whiteColor()) -> Toucan {
         self.image = Toucan.Mask.maskImageWithRoundedRect(self.image, cornerRadius: cornerRadius, borderWidth: borderWidth, borderColor: borderColor)
         return self
     }
@@ -241,10 +242,10 @@ public class Toucan : NSObject {
         the mask aren’t painted. The areas that correspond to the gray areas in the mask are painted
         using an intermediate alpha value that’s equal to 1 minus the image mask sample value.
         
-        :param: image     Image to apply the mask to
-        :param: maskImage Image Mask to apply to the Image
+        - parameter image:     Image to apply the mask to
+        - parameter maskImage: Image Mask to apply to the Image
         
-        :returns: Masked image
+        - returns: Masked image
         */
         public static func maskImageWithImage(image: UIImage, maskImage: UIImage) -> UIImage {
             
@@ -275,11 +276,11 @@ public class Toucan : NSObject {
         Allows specifying an additional border to draw on the clipped image.
         For a circle, ensure the image width and height are equal!
         
-        :param: image       Image to apply the mask to
-        :param: borderWidth Optional width of the border to apply - default 0
-        :param: borderColor Optional color of the border - default White
+        - parameter image:       Image to apply the mask to
+        - parameter borderWidth: Optional width of the border to apply - default 0
+        - parameter borderColor: Optional color of the border - default White
         
-        :returns: Masked image
+        - returns: Masked image
         */
         public static func maskImageWithEllipse(image: UIImage,
             borderWidth: CGFloat = 0, borderColor: UIColor = UIColor.whiteColor()) -> UIImage {
@@ -297,7 +298,6 @@ public class Toucan : NSObject {
                     
                     if (borderWidth > 0) {
                         CGContextSetStrokeColorWithColor(context, borderColor.CGColor);
-                        CGContextSetLineCap(context, kCGLineCapButt);
                         CGContextSetLineWidth(context, borderWidth);
                         CGContextAddEllipseInRect(context, CGRect(x: borderWidth / 2,
                             y: borderWidth / 2,
@@ -312,12 +312,12 @@ public class Toucan : NSObject {
         Mask the given image with a rounded rectangle border.
         Allows specifying an additional border to draw on the clipped image.
         
-        :param: image        Image to apply the mask to
-        :param: cornerRadius Radius of the rounded rect corners
-        :param: borderWidth  Optional width of border to apply - default 0
-        :param: borderColor  Optional color of the border - default White
+        - parameter image:        Image to apply the mask to
+        - parameter cornerRadius: Radius of the rounded rect corners
+        - parameter borderWidth:  Optional width of border to apply - default 0
+        - parameter borderColor:  Optional color of the border - default White
         
-        :returns: Masked image
+        - returns: Masked image
         */
         public static func maskImageWithRoundedRect(image: UIImage, cornerRadius: CGFloat,
             borderWidth: CGFloat = 0, borderColor: UIColor = UIColor.whiteColor()) -> UIImage {
@@ -334,7 +334,6 @@ public class Toucan : NSObject {
                     
                     if (borderWidth > 0) {
                         CGContextSetStrokeColorWithColor(context, borderColor.CGColor);
-                        CGContextSetLineCap(context, kCGLineCapButt);
                         CGContextSetLineWidth(context, borderWidth);
                         
                         let borderRect = CGRect(x: 0, y: 0,
@@ -353,11 +352,11 @@ public class Toucan : NSObject {
     /**
     Overlay an image ontop of the current image.
     
-    :param: image        Image to be on the bottom layer
-    :param: overlayImage Image to be on the top layer, i.e. drawn on top of image
-    :param: overlayFrame Frame of the overlay image
-
-    :returns: Self, allowing method chaining
+    - parameter image:        Image to be on the bottom layer
+    - parameter overlayImage: Image to be on the top layer, i.e. drawn on top of image
+    - parameter overlayFrame: Frame of the overlay image
+    
+    - returns: Self, allowing method chaining
     */
     public func layerWithOverlayImage(overlayImage: UIImage, overlayFrame: CGRect) -> Toucan {
         self.image = Toucan.Layer.overlayImage(self.image, overlayImage:overlayImage, overlayFrame:overlayFrame)
@@ -372,16 +371,15 @@ public class Toucan : NSObject {
         /**
         Overlay the given image into a new layout ontop of the image.
         
-        :param: image        Image to be on the bottom layer
-        :param: overlayImage Image to be on the top layer, i.e. drawn on top of image
-        :param: overlayFrame Frame of the overlay image
+        - parameter image:        Image to be on the bottom layer
+        - parameter overlayImage: Image to be on the top layer, i.e. drawn on top of image
+        - parameter overlayFrame: Frame of the overlay image
         
-        :returns: Masked image
+        - returns: Masked image
         */
         public static func overlayImage(image: UIImage, overlayImage: UIImage, overlayFrame: CGRect) -> UIImage {
-
+            
             let imgRef = Util.CGImageWithCorrectOrientation(image)
-            let overlayRef = Util.CGImageWithCorrectOrientation(overlayImage)
             let size = CGSize(width: CGFloat(CGImageGetWidth(imgRef)) / image.scale, height: CGFloat(CGImageGetHeight(imgRef)) / image.scale)
             
             return Util.drawImageWithClosure(size: size) { (size: CGSize, context: CGContext) -> () in
@@ -404,14 +402,14 @@ public class Toucan : NSObject {
         This helps to normalise input images to always be the correct orientation when performing
         other core graphics tasks on the image.
         
-        :param: image Image to create CGImageRef for
+        - parameter image: Image to create CGImageRef for
         
-        :returns: CGImageRef with rotated/transformed image context
+        - returns: CGImageRef with rotated/transformed image context
         */
         static func CGImageWithCorrectOrientation(image : UIImage) -> CGImageRef {
             
             if (image.imageOrientation == UIImageOrientation.Up) {
-                return image.CGImage
+                return image.CGImage!
             }
             
             UIGraphicsBeginImageContextWithOptions(image.size, false, 0)
@@ -438,16 +436,16 @@ public class Toucan : NSObject {
             let cgImage = CGBitmapContextCreateImage(context);
             UIGraphicsEndImageContext();
             
-            return cgImage;
+            return cgImage!;
         }
         
         /**
         Draw the image within the given bounds (i.e. resizes)
         
-        :param: image  Image to draw within the given bounds
-        :param: bounds Bounds to draw the image within
+        - parameter image:  Image to draw within the given bounds
+        - parameter bounds: Bounds to draw the image within
         
-        :returns: Resized image within bounds
+        - returns: Resized image within bounds
         */
         static func drawImageInBounds(image: UIImage, bounds : CGRect) -> UIImage {
             return drawImageWithClosure(size: bounds.size) { (size: CGSize, context: CGContext) -> () in
@@ -458,10 +456,10 @@ public class Toucan : NSObject {
         /**
         Crap the image within the given rect (i.e. resizes and crops)
         
-        :param: image Image to clip within the given rect bounds
-        :param: rect  Bounds to draw the image within
+        - parameter image: Image to clip within the given rect bounds
+        - parameter rect:  Bounds to draw the image within
         
-        :returns: Resized and cropped image
+        - returns: Resized and cropped image
         */
         static func croppedImageWithRect(image: UIImage, rect: CGRect) -> UIImage {
             return drawImageWithClosure(size: rect.size) { (size: CGSize, context: CGContext) -> () in
@@ -474,12 +472,12 @@ public class Toucan : NSObject {
         /**
         Closure wrapper around image context - setting up, ending and grabbing the image from the context.
         
-        :param: size    Size of the graphics context to create
-        :param: closure Closure of magic to run in a new context
+        - parameter size:    Size of the graphics context to create
+        - parameter closure: Closure of magic to run in a new context
         
-        :returns: Image pulled from the end of the closure
+        - returns: Image pulled from the end of the closure
         */
-        static func drawImageWithClosure(#size: CGSize!, closure: (size: CGSize, context: CGContext) -> ()) -> UIImage {
+        static func drawImageWithClosure(size size: CGSize!, closure: (size: CGSize, context: CGContext) -> ()) -> UIImage {
             UIGraphicsBeginImageContextWithOptions(size, false, 0)
             closure(size: size, context: UIGraphicsGetCurrentContext())
             let image : UIImage = UIGraphicsGetImageFromCurrentImageContext()

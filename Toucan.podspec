@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'Toucan'
-  s.version = '0.2.0'
+  s.version = '0.2.1'
   s.license = 'MIT'
   s.summary = 'Fabulous Image Processing in Swift'
   s.homepage = 'https://github.com/gavinbunney/Toucan'
