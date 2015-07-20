@@ -347,11 +347,15 @@ public class Toucan : NSObject {
                         //scale based on width
                         let scale = size.width / boundSize.width
                         path.applyTransform(CGAffineTransformMakeScale(scale, scale))
+                        path.applyTransform(CGAffineTransformMakeTranslation(0, (size.height - path.bounds.height) / 2.0))
                     } else {
                         //scale based on height
                         let scale = size.height / boundSize.height
                         path.applyTransform(CGAffineTransformMakeScale(scale, scale))
+                        path.applyTransform(CGAffineTransformMakeTranslation((size.width - path.bounds.width) / 2.0, 0))
                     }
+                    
+                    let newBounds = path.bounds
                     
                     let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
                     

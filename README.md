@@ -85,7 +85,7 @@ Example | Function
 
 Example | Function
 ---- | ---------
-![Path Mask](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Mask-Ellipse-Circle.jpg)|Mask the given image with a path. The path will be scaled to fit the image correctly!<br/><br/>`let path = UIBezierPath()`<br/>`\\configure the path`<br/>`Toucan(image: myImage).maskWithPath(path: path).image`<br/>or<br/>`Toucan.Mask.maskImageWithPath(myImage, path: path) -> UIImage`
+![Path Mask](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Mask-Path.jpg)|Mask the given image with a path. The path will be scaled to fit the image correctly!<br/><br/>`path.moveToPoint(CGPointMake(0, 50))`<br/>`path.addLineToPoint(CGPointMake(50, 0))`<br/>`path.addLineToPoint(CGPointMake(100, 50))`<br/>`path.addLineToPoint(CGPointMake(50, 100))`<br/>`path.closePath()`<br/>`Toucan(image: myImage).maskWithPath(path: path).image`<br/>or<br/>`Toucan.Mask.maskImageWithPath(myImage, path: path) -> UIImage`
 
 ### Rounded Rect Mask ###
 

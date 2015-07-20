@@ -35,7 +35,12 @@ class MaskingTests : ToucanTestCase {
     }
     
     func testMaskWithPath() {
-        let path = UIBezierPath(ovalInRect: CGRectMake(0, 0, 50, 50))
-        let masked = Toucan(image: landscapeImage).maskWithPath(path: path)
+        let path = UIBezierPath()
+        path.moveToPoint(CGPointMake(0, 50))
+        path.addLineToPoint(CGPointMake(50, 0))
+        path.addLineToPoint(CGPointMake(100, 50))
+        path.addLineToPoint(CGPointMake(50, 100))
+        path.closePath()
+        let masked = Toucan(image: landscapeImage).maskWithPath(path: path).image
     }
 }
