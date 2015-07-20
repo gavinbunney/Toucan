@@ -80,6 +80,10 @@ path.addLineToPoint(CGPointMake(50, 100))
 path.closePath()
 Toucan(image: landscapeCropped).maskWithPath(path: path).image
 
+Toucan(image: landscapeCropped).maskWithPathClosure(path: {(rect) -> (UIBezierPath) in
+    return UIBezierPath(roundedRect: rect, cornerRadius: 50.0)
+}).image
+
 
 // ------------------------------------------------------------
 // Layers

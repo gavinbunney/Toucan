@@ -41,6 +41,14 @@ class MaskingTests : ToucanTestCase {
         path.addLineToPoint(CGPointMake(100, 50))
         path.addLineToPoint(CGPointMake(50, 100))
         path.closePath()
-        let masked = Toucan(image: landscapeImage).maskWithPath(path: path).image
+        let masked2 = Toucan(image: landscapeImage).resize(CGSizeMake(300, 250), fitMode: Toucan.Resize.FitMode.Scale).maskWithPath(path: path).image
+        
+        let cornerRGBA = getPixelRGBA(masked2, point: CGPoint(x: 0, y: 0))
+        XCTAssertEqual(cornerRGBA.alpha, 0.0 as CGFloat, "Check corner is transparent")
+        
+//        let centerRGBA = getPixelRGBA(masked2, point: CGPoint(x: masked2.size.width / 2, y: masked2.size.height / 2))
+        
+        let centerRGBA = getPixelRGBA(masked2, point: CGPoint(x: 150, y: 125))
+        XCTAssertEqual(centerRGBA.alpha, 255.0 as CGFloat, "Check center is not transparent")
     }
 }

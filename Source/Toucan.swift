@@ -219,12 +219,23 @@ public class Toucan : NSObject {
     Mask the contained image with a path (UIBezierPath) that will be scaled to fit the image.
     
     - parameter path: UIBezierPath to mask the image
-    - parameter borderColor: Optional color of the border - default White
     
     - returns: Self, allowing method chaining
     */
     public func maskWithPath(#path: UIBezierPath) -> Toucan {
         self.image = Toucan.Mask.maskImageWithPath(self.image, path: path)
+        return self
+    }
+    
+    /**
+    Mask the contained image with a path (UIBezierPath) which is provided via a closure.
+    
+    - parameter path: closure that returns a UIBezierPath. Using a closure allows the user to provide the path after knowing the size of the image
+    
+    - returns: Self, allowing method chaining
+    */
+    public func maskWithPathClosure(#path: (rect: CGRect) -> (UIBezierPath)) -> Toucan {
+        self.image = Toucan.Mask.maskImageWithPathClosure(self.image, pathInRect: path)
         return self
     }
     
@@ -363,6 +374,23 @@ public class Toucan : NSObject {
                     CGContextClip(context)
                     image.drawInRect(rect)
                 }
+        }
+        
+        /**
+        Mask the given image with a path(UIBezierPath) provided via a closure. This allows the user to get the size of the image before computing their path variable.
+        
+        - parameter image:       Image to apply the mask to
+        - parameter path: UIBezierPath to make as the mask
+        
+        - returns: Masked image
+        */
+        public static func maskImageWithPathClosure(image: UIImage,
+            pathInRect:(rect: CGRect) -> (UIBezierPath)) -> UIImage {
+                
+                let imgRef = Util.CGImageWithCorrectOrientation(image)
+                let size = CGSize(width: CGFloat(CGImageGetWidth(imgRef)) / image.scale, height: CGFloat(CGImageGetHeight(imgRef)) / image.scale)
+                
+                return maskImageWithPath(image, path: pathInRect(rect: CGRectMake(0, 0, size.width, size.height)))
         }
         
         /**
