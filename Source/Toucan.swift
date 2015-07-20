@@ -195,7 +195,7 @@ public class Toucan : NSObject {
     
     - returns: Self, allowing method chaining
     */
-    public func maskWithImage(maskImage maskImage : UIImage)  -> Toucan {
+    public func maskWithImage(#maskImage : UIImage)  -> Toucan {
         self.image = Toucan.Mask.maskImageWithImage(self.image, maskImage: maskImage)
         return self
     }
@@ -216,6 +216,19 @@ public class Toucan : NSObject {
     }
     
     /**
+    Mask the contained image with a path (UIBezierPath) that will be scaled to fit the image.
+    
+    - parameter path: UIBezierPath to mask the image
+    - parameter borderColor: Optional color of the border - default White
+    
+    - returns: Self, allowing method chaining
+    */
+    public func maskWithPath(#path: UIBezierPath) -> Toucan {
+        self.image = Toucan.Mask.maskImageWithPath(self.image, path: path)
+        return self
+    }
+    
+    /**
     Mask the contained image with a rounded rectangle border.
     Allows specifying an additional border to draw on the clipped image.
     
@@ -225,7 +238,7 @@ public class Toucan : NSObject {
     
     - returns: Self, allowing method chaining
     */
-    public func maskWithRoundedRect(cornerRadius cornerRadius: CGFloat, borderWidth: CGFloat = 0, borderColor: UIColor = UIColor.whiteColor()) -> Toucan {
+    public func maskWithRoundedRect(#cornerRadius: CGFloat, borderWidth: CGFloat = 0, borderColor: UIColor = UIColor.whiteColor()) -> Toucan {
         self.image = Toucan.Mask.maskImageWithRoundedRect(self.image, cornerRadius: cornerRadius, borderWidth: borderWidth, borderColor: borderColor)
         return self
     }
@@ -305,6 +318,46 @@ public class Toucan : NSObject {
                             height: size.height - borderWidth));
                         CGContextStrokePath(context);
                     }
+                }
+        }
+        
+        /**
+        Mask the given image with a path(UIBezierPath) that will be scaled to fit the image.
+        
+        - parameter image:       Image to apply the mask to
+        - parameter path: UIBezierPath to make as the mask
+        
+        - returns: Masked image
+        */
+        public static func maskImageWithPath(image: UIImage,
+            path: UIBezierPath) -> UIImage {
+                
+                let imgRef = Util.CGImageWithCorrectOrientation(image)
+                let size = CGSize(width: CGFloat(CGImageGetWidth(imgRef)) / image.scale, height: CGFloat(CGImageGetHeight(imgRef)) / image.scale)
+                
+                return Util.drawImageWithClosure(size: size) { (size: CGSize, context: CGContext) -> () in
+                    
+                    let boundSize = path.bounds.size
+                    
+                    let pathRatio = boundSize.width / boundSize.height
+                    let imageRatio = size.width / size.height
+                    
+                    
+                    if pathRatio > imageRatio {
+                        //scale based on width
+                        let scale = size.width / boundSize.width
+                        path.applyTransform(CGAffineTransformMakeScale(scale, scale))
+                    } else {
+                        //scale based on height
+                        let scale = size.height / boundSize.height
+                        path.applyTransform(CGAffineTransformMakeScale(scale, scale))
+                    }
+                    
+                    let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+                    
+                    CGContextAddPath(context, path.CGPath)
+                    CGContextClip(context)
+                    image.drawInRect(rect)
                 }
         }
         
@@ -477,7 +530,7 @@ public class Toucan : NSObject {
         
         - returns: Image pulled from the end of the closure
         */
-        static func drawImageWithClosure(size size: CGSize!, closure: (size: CGSize, context: CGContext) -> ()) -> UIImage {
+        static func drawImageWithClosure(#size: CGSize!, closure: (size: CGSize, context: CGContext) -> ()) -> UIImage {
             UIGraphicsBeginImageContextWithOptions(size, false, 0)
             closure(size: size, context: UIGraphicsGetCurrentContext())
             let image : UIImage = UIGraphicsGetImageFromCurrentImageContext()

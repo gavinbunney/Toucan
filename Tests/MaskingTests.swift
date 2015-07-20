@@ -33,4 +33,9 @@ class MaskingTests : ToucanTestCase {
         let centerRGBA = getPixelRGBA(masked, point: CGPoint(x: masked.size.width / 2, y: masked.size.height / 2))
         XCTAssertEqual(centerRGBA.alpha, 255.0 as CGFloat, "Check center is not transparent")
     }
+    
+    func testMaskWithPath() {
+        let path = UIBezierPath(ovalInRect: CGRectMake(0, 0, 50, 50))
+        let masked = Toucan(image: landscapeImage).maskWithPath(path: path)
+    }
 }
