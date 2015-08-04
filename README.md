@@ -81,6 +81,13 @@ Example | Function
 ![Ellipse Mask](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Mask-Ellipse-Circle.jpg)|Mask the given image with an ellipse. Allows specifying an additional border to draw on the clipped image. For a circle, ensure the image width and height are equal!<br/><br/>`Toucan(image: myImage).maskWithEllipse().image`<br/>or<br/>`Toucan.Mask.maskImageWithEllipse(myImage) -> UIImage`
 ![Ellipse Mask w. Border](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Mask-Ellipse-Border.jpg)|When specifying a border width, it is draw on the clipped image.<br/><br/>`Toucan(image: myImage).maskWithEllipse(borderWidth: 10, borderColor: UIColor.yellowColor()).image`<br/>or<br/>`Toucan.Mask.maskImageWithEllipse(myImage, borderWidth: 10, borderColor: UIColor.yellowColor()) -> UIImage`
 
+### Path Mask ###
+
+Example | Function
+---- | ---------
+![Path Mask](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Mask-Path.jpg)|Mask the given image with a path. The path will be scaled to fit the image correctly!<br/><br/>`path.moveToPoint(CGPointMake(0, 50))`<br/>`path.addLineToPoint(CGPointMake(50, 0))`<br/>`path.addLineToPoint(CGPointMake(100, 50))`<br/>`path.addLineToPoint(CGPointMake(50, 100))`<br/>`path.closePath()`<br/>`Toucan(image: myImage).maskWithPath(path: path).image`<br/>or<br/>`Toucan.Mask.maskImageWithPath(myImage, path: path) -> UIImage`
+![Path Mask w. Closure](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Mask-Path.jpg)|Mask the given image with a path provided via a closure. This allows you to construct your path relative to the bounds of the image!<br/><br/>`Toucan(image: myImage).maskWithPathClosure(path: (rect: CGRect) -> (UIBezierPath)).image`<br/>or<br/>`Toucan.Mask.maskImageWithPathClosure(myImage, path: (rect: CGRect) -> (UIBezierPath)) -> UIImage`
+
 ### Rounded Rect Mask ###
 
 Example | Function

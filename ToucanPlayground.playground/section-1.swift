@@ -71,6 +71,19 @@ Toucan(image: landscapeCropped).maskWithRoundedRect(cornerRadius: 30, borderWidt
 // Masking with an custom image mask
 Toucan(image: landscapeCropped).maskWithImage(maskImage: octagonMask!).image
 
+//testing the path stuff
+let path = UIBezierPath()
+path.moveToPoint(CGPointMake(0, 50))
+path.addLineToPoint(CGPointMake(50, 0))
+path.addLineToPoint(CGPointMake(100, 50))
+path.addLineToPoint(CGPointMake(50, 100))
+path.closePath()
+Toucan(image: landscapeCropped).maskWithPath(path: path).image
+
+Toucan(image: landscapeCropped).maskWithPathClosure(path: {(rect) -> (UIBezierPath) in
+    return UIBezierPath(roundedRect: rect, cornerRadius: 50.0)
+}).image
+
 
 // ------------------------------------------------------------
 // Layers
@@ -78,7 +91,5 @@ Toucan(image: landscapeCropped).maskWithImage(maskImage: octagonMask!).image
 
 // We can draw ontop of another image
 Toucan(image: portraitImage!).layerWithOverlayImage(octagonMask!, overlayFrame: CGRectMake(450, 400, 200, 200)).image
-
-
 
 
