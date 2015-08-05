@@ -497,30 +497,56 @@ public class Toucan : NSObject {
                 return image.CGImage!
             }
             
-            UIGraphicsBeginImageContextWithOptions(image.size, false, 0)
+            var transform : CGAffineTransform = CGAffineTransformIdentity;
             
-            let context = UIGraphicsGetCurrentContext()
-            
-            // TODO - handle other image orientations / mirrored states
             switch (image.imageOrientation) {
-            case UIImageOrientation.Right:
-                CGContextRotateCTM(context, CGFloat(90 * M_PI/180))
-                break
-            case UIImageOrientation.Left:
-                CGContextRotateCTM(context, CGFloat(-90 * M_PI/180))
-                break
-            case UIImageOrientation.Down:
-                CGContextRotateCTM(context, CGFloat(M_PI))
-                break
-            default:
-                break
+                case UIImageOrientation.Right, UIImageOrientation.RightMirrored:
+                    transform = CGAffineTransformTranslate(transform, 0, image.size.height)
+                    transform = CGAffineTransformRotate(transform, CGFloat(-1.0 * M_PI_2))
+                    break
+                case UIImageOrientation.Left, UIImageOrientation.LeftMirrored:
+                    transform = CGAffineTransformTranslate(transform, image.size.width, 0)
+                    transform = CGAffineTransformRotate(transform, CGFloat(M_PI_2))
+                    break
+                case UIImageOrientation.Down, UIImageOrientation.DownMirrored:
+                    transform = CGAffineTransformTranslate(transform, image.size.width, image.size.height)
+                    transform = CGAffineTransformRotate(transform, CGFloat(M_PI))
+                    break
+                default:
+                    break
             }
             
-            image.drawAtPoint(CGPointMake(0, 0));
+            switch (image.imageOrientation) {
+                case UIImageOrientation.RightMirrored, UIImageOrientation.LeftMirrored:
+                    transform = CGAffineTransformTranslate(transform, image.size.height, 0);
+                    transform = CGAffineTransformScale(transform, -1, 1);
+                    break
+                case UIImageOrientation.DownMirrored, UIImageOrientation.UpMirrored:
+                    transform = CGAffineTransformTranslate(transform, image.size.width, 0);
+                    transform = CGAffineTransformScale(transform, -1, 1);
+                    break
+                default:
+                    break
+            }
+            
+            var context : CGContextRef = CGBitmapContextCreate(nil, Int(image.size.width), Int(image.size.height),
+                CGImageGetBitsPerComponent(image.CGImage), 0,
+                CGImageGetColorSpace(image.CGImage),
+                CGImageGetBitmapInfo(image.CGImage));
+            
+            CGContextConcatCTM(context, transform);
+            
+            switch (image.imageOrientation) {
+                case UIImageOrientation.Left, UIImageOrientation.LeftMirrored,
+                     UIImageOrientation.Right, UIImageOrientation.RightMirrored:
+                    CGContextDrawImage(context, CGRectMake(0, 0, image.size.height, image.size.width), image.CGImage);
+                    break;
+                default:
+                    CGContextDrawImage(context, CGRectMake(0, 0, image.size.width, image.size.height), image.CGImage);
+                    break;
+            }
             
             let cgImage = CGBitmapContextCreateImage(context);
-            UIGraphicsEndImageContext();
-            
             return cgImage!;
         }
         

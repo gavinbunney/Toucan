@@ -1,8 +1,6 @@
 UserInterfaceState.xcuserstate
 Toucan.xccheckout
-Toucan.xcworkspace/xcuserdata/bunneyapps.xcuserdatad
+Toucan.xcworkspace/xcuserdata/*.xcuserdatad
 build
 .idea
 docs
-
-Toucan.xcworkspace/xcuserdata/bkirchner.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
