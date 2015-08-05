@@ -41,7 +41,7 @@ class MaskingTests : ToucanTestCase {
         path.addLineToPoint(CGPointMake(100, 50))
         path.addLineToPoint(CGPointMake(50, 100))
         path.closePath()
-        let masked2 = Toucan(image: landscapeImage).resize(CGSizeMake(300, 250), fitMode: Toucan.Resize.FitMode.Scale).maskWithPath(path: path).image
+        let masked2 = Toucan(image: landscapeImage).resize(CGSizeMake(300, 250), fitMode: Toucan.Resize.FitMode.Scale).maskWithPath(path).image
         
         let cornerRGBA = getPixelRGBA(masked2, point: CGPoint(x: 0, y: 0))
         XCTAssertEqual(cornerRGBA.alpha, 0.0 as CGFloat, "Check corner is transparent")
