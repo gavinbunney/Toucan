@@ -195,7 +195,7 @@ public class Toucan : NSObject {
     
     - returns: Self, allowing method chaining
     */
-    public func maskWithImage(#maskImage : UIImage)  -> Toucan {
+    public func maskWithImage(maskImage maskImage : UIImage)  -> Toucan {
         self.image = Toucan.Mask.maskImageWithImage(self.image, maskImage: maskImage)
         return self
     }
@@ -222,7 +222,7 @@ public class Toucan : NSObject {
     
     - returns: Self, allowing method chaining
     */
-    public func maskWithPath(#path: UIBezierPath) -> Toucan {
+    public func maskWithPath(path path: UIBezierPath) -> Toucan {
         self.image = Toucan.Mask.maskImageWithPath(self.image, path: path)
         return self
     }
@@ -234,7 +234,7 @@ public class Toucan : NSObject {
     
     - returns: Self, allowing method chaining
     */
-    public func maskWithPathClosure(#path: (rect: CGRect) -> (UIBezierPath)) -> Toucan {
+    public func maskWithPathClosure(path path: (rect: CGRect) -> (UIBezierPath)) -> Toucan {
         self.image = Toucan.Mask.maskImageWithPathClosure(self.image, pathInRect: path)
         return self
     }
@@ -249,7 +249,7 @@ public class Toucan : NSObject {
     
     - returns: Self, allowing method chaining
     */
-    public func maskWithRoundedRect(#cornerRadius: CGFloat, borderWidth: CGFloat = 0, borderColor: UIColor = UIColor.whiteColor()) -> Toucan {
+    public func maskWithRoundedRect(cornerRadius cornerRadius: CGFloat, borderWidth: CGFloat = 0, borderColor: UIColor = UIColor.whiteColor()) -> Toucan {
         self.image = Toucan.Mask.maskImageWithRoundedRect(self.image, cornerRadius: cornerRadius, borderWidth: borderWidth, borderColor: borderColor)
         return self
     }
@@ -365,8 +365,6 @@ public class Toucan : NSObject {
                         path.applyTransform(CGAffineTransformMakeScale(scale, scale))
                         path.applyTransform(CGAffineTransformMakeTranslation((size.width - path.bounds.width) / 2.0, 0))
                     }
-                    
-                    let newBounds = path.bounds
                     
                     let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
                     
@@ -529,10 +527,11 @@ public class Toucan : NSObject {
                     break
             }
             
-            var context : CGContextRef = CGBitmapContextCreate(nil, Int(image.size.width), Int(image.size.height),
-                CGImageGetBitsPerComponent(image.CGImage), 0,
+            let context : CGContextRef = CGBitmapContextCreate(nil, CGImageGetWidth(image.CGImage), CGImageGetWidth(image.CGImage),
+                CGImageGetBitsPerComponent(image.CGImage),
+                CGImageGetBytesPerRow(image.CGImage),
                 CGImageGetColorSpace(image.CGImage),
-                CGImageGetBitmapInfo(image.CGImage));
+                CGImageGetBitmapInfo(image.CGImage))!;
             
             CGContextConcatCTM(context, transform);
             
@@ -588,7 +587,7 @@ public class Toucan : NSObject {
         
         - returns: Image pulled from the end of the closure
         */
-        static func drawImageWithClosure(#size: CGSize!, closure: (size: CGSize, context: CGContext) -> ()) -> UIImage {
+        static func drawImageWithClosure(size size: CGSize!, closure: (size: CGSize, context: CGContext) -> ()) -> UIImage {
             UIGraphicsBeginImageContextWithOptions(size, false, 0)
             closure(size: size, context: UIGraphicsGetCurrentContext())
             let image : UIImage = UIGraphicsGetImageFromCurrentImageContext()
