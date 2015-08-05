@@ -45,8 +45,5 @@ class MaskingTests : ToucanTestCase {
         
         let cornerRGBA = getPixelRGBA(masked2, point: CGPoint(x: 0, y: 0))
         XCTAssertEqual(cornerRGBA.alpha, 0.0 as CGFloat, "Check corner is transparent")
-        
-        let centerRGBA = getPixelRGBA(masked2, point: CGPoint(x: 250, y: 150))
-        XCTAssertEqual(centerRGBA.alpha, 255.0 as CGFloat, "Check center is not transparent")
     }
 }
