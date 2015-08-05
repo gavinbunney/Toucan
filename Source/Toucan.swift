@@ -366,8 +366,6 @@ public class Toucan : NSObject {
                         path.applyTransform(CGAffineTransformMakeTranslation((size.width - path.bounds.width) / 2.0, 0))
                     }
                     
-                    let newBounds = path.bounds
-                    
                     let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
                     
                     CGContextAddPath(context, path.CGPath)
@@ -529,10 +527,11 @@ public class Toucan : NSObject {
                     break
             }
             
-            var context : CGContextRef = CGBitmapContextCreate(nil, Int(image.size.width), Int(image.size.height),
-                CGImageGetBitsPerComponent(image.CGImage), 0,
+            let context : CGContextRef = CGBitmapContextCreate(nil, CGImageGetWidth(image.CGImage), CGImageGetWidth(image.CGImage),
+                CGImageGetBitsPerComponent(image.CGImage),
+                CGImageGetBytesPerRow(image.CGImage),
                 CGImageGetColorSpace(image.CGImage),
-                CGImageGetBitmapInfo(image.CGImage));
+                CGImageGetBitmapInfo(image.CGImage))!;
             
             CGContextConcatCTM(context, transform);
             
