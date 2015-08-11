@@ -1,6 +1,6 @@
-UserInterfaceState.xcuserstate
-Toucan.xccheckout
-Toucan.xcworkspace/xcuserdata/*.xcuserdatad
+*.xcuserstate
+xcuserdata
+*.xccheckout
 build
 .idea
 docs
