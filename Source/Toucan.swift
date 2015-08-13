@@ -447,7 +447,7 @@ public class Toucan : NSObject {
     }
     
     /**
-    Container struct for all things Layer related
+    Container struct for all things Layer related.
     */
     public struct Layer {
         
@@ -564,7 +564,7 @@ public class Toucan : NSObject {
         }
         
         /**
-        Crap the image within the given rect (i.e. resizes and crops)
+        Crop the image within the given rect (i.e. resizes and crops)
         
         - parameter image: Image to clip within the given rect bounds
         - parameter rect:  Bounds to draw the image within
@@ -589,7 +589,7 @@ public class Toucan : NSObject {
         */
         static func drawImageWithClosure(size size: CGSize!, closure: (size: CGSize, context: CGContext) -> ()) -> UIImage {
             UIGraphicsBeginImageContextWithOptions(size, false, 0)
-            closure(size: size, context: UIGraphicsGetCurrentContext())
+            closure(size: size, context: UIGraphicsGetCurrentContext()!)
             let image : UIImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             return image
