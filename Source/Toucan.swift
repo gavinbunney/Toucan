@@ -527,7 +527,7 @@ public class Toucan : NSObject {
                     break
             }
             
-            let context : CGContextRef = CGBitmapContextCreate(nil, CGImageGetWidth(image.CGImage), CGImageGetWidth(image.CGImage),
+            let context : CGContextRef = CGBitmapContextCreate(nil, CGImageGetWidth(image.CGImage), CGImageGetHeight(image.CGImage),
                 CGImageGetBitsPerComponent(image.CGImage),
                 CGImageGetBytesPerRow(image.CGImage),
                 CGImageGetColorSpace(image.CGImage),
