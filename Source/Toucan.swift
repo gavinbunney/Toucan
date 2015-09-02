@@ -531,7 +531,7 @@ public class Toucan : NSObject {
                 CGImageGetBitsPerComponent(image.CGImage),
                 CGImageGetBytesPerRow(image.CGImage),
                 CGImageGetColorSpace(image.CGImage),
-                CGImageGetBitmapInfo(image.CGImage).rawValue)!;
+                CGImageGetBitmapInfo(image.CGImage))!;
             
             CGContextConcatCTM(context, transform);
             
