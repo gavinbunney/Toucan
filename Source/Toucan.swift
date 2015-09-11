@@ -344,7 +344,7 @@ public class Toucan : NSObject {
             path: UIBezierPath) -> UIImage {
                 
                 let imgRef = Util.CGImageWithCorrectOrientation(image)
-                let size = CGSize(width: CGFloat(CGImageGetWidth(imgRef)) / image.scale, height: CGFloat(CGImageGetHeight(imgRef)) / image.scale)
+                let size = CGSize(width: image.size.width / image.scale, height: image.size.height / image.scale)
                 
                 return Util.drawImageWithClosure(size: size) { (size: CGSize, context: CGContext) -> () in
                     
