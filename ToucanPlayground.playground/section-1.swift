@@ -26,7 +26,7 @@ import Toucan
 //
 // Toucan Playground!
 //
-// Note: Due to a current limitation in Xcode6, you need to first Build the
+// Note: Due to a current limitation in Xcode7, you need to first Build the
 //       Toucan.framework for a 64bit device before running this playground :)
 //
 
