@@ -526,24 +526,29 @@ public class Toucan : NSObject {
                 default:
                     break
             }
+
+            let contextWidth : Int
+            let contextHeight : Int
             
-            let context : CGContextRef = CGBitmapContextCreate(nil, CGImageGetWidth(image.CGImage), CGImageGetHeight(image.CGImage),
+            switch (image.imageOrientation) {
+                case UIImageOrientation.Right, UIImageOrientation.RightMirrored, UIImageOrientation.Left, UIImageOrientation.LeftMirrored:
+                    contextWidth = CGImageGetHeight(image.CGImage)
+                    contextHeight = CGImageGetWidth(image.CGImage)
+                    break
+                default:
+                    contextWidth = CGImageGetWidth(image.CGImage)
+                    contextHeight = CGImageGetHeight(image.CGImage)
+                    break
+            }
+            
+            let context : CGContextRef = CGBitmapContextCreate(nil, contextWidth, contextHeight,
                 CGImageGetBitsPerComponent(image.CGImage),
                 CGImageGetBytesPerRow(image.CGImage),
                 CGImageGetColorSpace(image.CGImage),
                 CGImageGetBitmapInfo(image.CGImage))!;
             
             CGContextConcatCTM(context, transform);
-            
-            switch (image.imageOrientation) {
-                case UIImageOrientation.Left, UIImageOrientation.LeftMirrored,
-                     UIImageOrientation.Right, UIImageOrientation.RightMirrored:
-                    CGContextDrawImage(context, CGRectMake(0, 0, image.size.height, image.size.width), image.CGImage);
-                    break;
-                default:
-                    CGContextDrawImage(context, CGRectMake(0, 0, image.size.width, image.size.height), image.CGImage);
-                    break;
-            }
+            CGContextDrawImage(context, CGRectMake(0, 0, contextWidth, contextHeight), image.CGImage);
             
             let cgImage = CGBitmapContextCreateImage(context);
             return cgImage!;
