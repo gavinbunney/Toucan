@@ -210,7 +210,7 @@ public class Toucan : NSObject {
     
     - returns: Self, allowing method chaining
     */
-    public func maskWithEllipse(borderWidth: CGFloat = 0, borderColor: UIColor = UIColor.whiteColor()) -> Toucan {
+    public func maskWithEllipse(borderWidth borderWidth: CGFloat = 0, borderColor: UIColor = UIColor.whiteColor()) -> Toucan {
         self.image = Toucan.Mask.maskImageWithEllipse(self.image, borderWidth: borderWidth, borderColor: borderColor)
         return self
     }
