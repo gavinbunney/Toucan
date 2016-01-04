@@ -16,6 +16,7 @@
 		74FBD0F21A66515F009B7BC5 /* Portrait.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 74FBD0E41A665140009B7BC5 /* Portrait.jpg */; };
 		74FBD0F31A665162009B7BC5 /* OctagonMask.png in Resources */ = {isa = PBXBuildFile; fileRef = 74FBD0E31A665140009B7BC5 /* OctagonMask.png */; };
 		74FBD0F41A665164009B7BC5 /* Landscape.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 74FBD0E21A665140009B7BC5 /* Landscape.jpg */; };
+		C4D770E71C2BF2C800B15C64 /* ToucanTVOS.h in Headers */ = {isa = PBXBuildFile; fileRef = C4D770E61C2BF2C800B15C64 /* ToucanTVOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,9 @@
 		74FBD0E71A665140009B7BC5 /* ToucanTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToucanTestCase.swift; path = Tests/ToucanTestCase.swift; sourceTree = SOURCE_ROOT; };
 		74FBD0EE1A66514E009B7BC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/Info.plist; sourceTree = SOURCE_ROOT; };
 		74FBD0F51A665178009B7BC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = SOURCE_ROOT; };
+		C4D770E41C2BF2C800B15C64 /* Toucan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Toucan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4D770E61C2BF2C800B15C64 /* ToucanTVOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ToucanTVOS.h; sourceTree = "<group>"; };
+		C4D770E81C2BF2C800B15C64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C4D770E01C2BF2C800B15C64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -67,6 +78,7 @@
 			children = (
 				740AC3EC1999799900AB9A86 /* Source */,
 				740AC3F61999799900AB9A86 /* Tests */,
+				C4D770E51C2BF2C800B15C64 /* ToucanTVOS */,
 				740AC3EB1999799900AB9A86 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,6 +88,7 @@
 			children = (
 				740AC3EA1999799900AB9A86 /* Toucan.framework */,
 				740AC3F51999799900AB9A86 /* ToucanTests.xctest */,
+				C4D770E41C2BF2C800B15C64 /* Toucan.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,6 +144,15 @@
 			path = Tests/Assets;
 			sourceTree = SOURCE_ROOT;
 		};
+		C4D770E51C2BF2C800B15C64 /* ToucanTVOS */ = {
+			isa = PBXGroup;
+			children = (
+				C4D770E61C2BF2C800B15C64 /* ToucanTVOS.h */,
+				C4D770E81C2BF2C800B15C64 /* Info.plist */,
+			);
+			path = ToucanTVOS;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -139,6 +161,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				74FBD0DF1A66512A009B7BC5 /* Toucan.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C4D770E11C2BF2C800B15C64 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4D770E71C2BF2C800B15C64 /* ToucanTVOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +211,24 @@
 			productReference = 740AC3F51999799900AB9A86 /* ToucanTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		C4D770E31C2BF2C800B15C64 /* ToucanTVOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C4D770EB1C2BF2C800B15C64 /* Build configuration list for PBXNativeTarget "ToucanTVOS" */;
+			buildPhases = (
+				C4D770DF1C2BF2C800B15C64 /* Sources */,
+				C4D770E01C2BF2C800B15C64 /* Frameworks */,
+				C4D770E11C2BF2C800B15C64 /* Headers */,
+				C4D770E21C2BF2C800B15C64 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ToucanTVOS;
+			productName = ToucanTVOS;
+			productReference = C4D770E41C2BF2C800B15C64 /* Toucan.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -196,6 +244,10 @@
 					};
 					740AC3F41999799900AB9A86 = {
 						CreatedOnToolsVersion = 6.0;
+					};
+					C4D770E31C2BF2C800B15C64 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = GGU39CDBL2;
 					};
 				};
 			};
@@ -213,6 +265,7 @@
 			targets = (
 				740AC3E91999799900AB9A86 /* Toucan */,
 				740AC3F41999799900AB9A86 /* ToucanTests */,
+				C4D770E31C2BF2C800B15C64 /* ToucanTVOS */,
 			);
 		};
 /* End PBXProject section */
@@ -235,6 +288,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C4D770E21C2BF2C800B15C64 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -253,6 +313,13 @@
 				74FBD0EF1A665152009B7BC5 /* MaskingTests.swift in Sources */,
 				74FBD0F11A665158009B7BC5 /* ToucanTestCase.swift in Sources */,
 				74FBD0F01A665155009B7BC5 /* ResizeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C4D770DF1C2BF2C800B15C64 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +489,49 @@
 			};
 			name = Release;
 		};
+		C4D770E91C2BF2C800B15C64 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = ToucanTVOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.ToucanTVOS;
+				PRODUCT_NAME = Toucan;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		C4D770EA1C2BF2C800B15C64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = ToucanTVOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fr.phimage.ToucanTVOS;
+				PRODUCT_NAME = Toucan;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -451,6 +561,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		C4D770EB1C2BF2C800B15C64 /* Build configuration list for PBXNativeTarget "ToucanTVOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4D770E91C2BF2C800B15C64 /* Debug */,
+				C4D770EA1C2BF2C800B15C64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
