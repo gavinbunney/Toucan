@@ -5,4 +5,4 @@ before_install:
 script:
 - set -o pipefail
 
-- xcodebuild -project Toucan.xcodeproj -scheme "ToucanTests" test -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty -c
+- xcodebuild -project Toucan.xcodeproj -scheme "Toucan" test -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 6s" ONLY_ACTIVE_ARCH=NO | xcpretty -c
