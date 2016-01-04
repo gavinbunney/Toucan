@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74BE12931C39F80A00C9521C /* Toucan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 740AC3EA1999799900AB9A86 /* Toucan.framework */; };
 		74FBD0DF1A66512A009B7BC5 /* Toucan.h in Headers */ = {isa = PBXBuildFile; fileRef = 74FBD0DD1A66512A009B7BC5 /* Toucan.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		74FBD0E01A66512A009B7BC5 /* Toucan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FBD0DE1A66512A009B7BC5 /* Toucan.swift */; };
 		74FBD0EF1A665152009B7BC5 /* MaskingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74FBD0E51A665140009B7BC5 /* MaskingTests.swift */; };
@@ -54,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74BE12931C39F80A00C9521C /* Toucan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
