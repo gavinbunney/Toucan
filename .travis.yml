@@ -6,4 +6,4 @@ script:
 - set -o pipefail
 
 - xcodebuild -project Toucan.xcodeproj -scheme "Toucan" test -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 6s" ONLY_ACTIVE_ARCH=NO | xcpretty -c
-- xcodebuild -project Toucan.xcodeproj -scheme "Toucan.tvOS" build -destination generic/platform=tvOS ONLY_ACTIVE_ARCH=NO | xcpretty -c
+- xcodebuild -project Toucan.xcodeproj -scheme "Toucan.tvOS" build -destination "platform=tvOS Simulator,name=Apple TV 1080p" ONLY_ACTIVE_ARCH=NO | xcpretty -c
