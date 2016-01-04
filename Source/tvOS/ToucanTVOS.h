@@ -1,4 +1,4 @@
-// Toucan.h
+// ToucanTVOS.h
 //
 // Copyright (c) 2014-2016 Gavin Bunney, Simple Labs (http://thesimplelab.co)
 //
@@ -22,8 +22,12 @@
 
 #import <UIKit/UIKit.h>
 
-//! Project version number for Toucan.
-FOUNDATION_EXPORT double ToucanVersionNumber;
+//! Project version number for ToucanTVOS.
+FOUNDATION_EXPORT double ToucanTVOSVersionNumber;
 
-//! Project version string for Toucan.
-FOUNDATION_EXPORT const unsigned char ToucanVersionString[];
+//! Project version string for ToucanTVOS.
+FOUNDATION_EXPORT const unsigned char ToucanTVOSVersionString[];
+
+// In this header, you should import all the public headers of your framework using statements like #import <ToucanTVOS/PublicHeader.h>
+
+
