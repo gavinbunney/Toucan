@@ -38,7 +38,7 @@ class ToucanTestCase : XCTestCase {
     }
 
     internal func getPixelRGBA(image: UIImage, point: CGPoint) -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
-        let pixelData : CFDataRef = CGDataProviderCopyData(CGImageGetDataProvider(image.CGImage))!
+        let pixelData : CFDataRef = CGDataProviderCopyData(CGImageGetDataProvider(image.CGImage!)!)!
         let data  = CFDataGetBytePtr(pixelData)
         
         let pixelInfo = Int(((image.size.width * point.y) + point.x ) * 4)
