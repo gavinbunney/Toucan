@@ -276,14 +276,14 @@ public class Toucan : NSObject {
             let imgRef = Util.CGImageWithCorrectOrientation(image)
             let maskRef = maskImage.CGImage
             
-            let mask = CGImageMaskCreate(CGImageGetWidth(maskRef),
-                CGImageGetHeight(maskRef),
-                CGImageGetBitsPerComponent(maskRef),
-                CGImageGetBitsPerPixel(maskRef),
-                CGImageGetBytesPerRow(maskRef),
-                CGImageGetDataProvider(maskRef), nil, false);
+            let mask = CGImageMaskCreate(CGImageGetWidth(maskRef!),
+                CGImageGetHeight(maskRef!),
+                CGImageGetBitsPerComponent(maskRef!),
+                CGImageGetBitsPerPixel(maskRef!),
+                CGImageGetBytesPerRow(maskRef!),
+                CGImageGetDataProvider(maskRef!)!, nil, false);
             
-            let masked = CGImageCreateWithMask(imgRef, mask);
+            let masked = CGImageCreateWithMask(imgRef, mask!);
             
             return Util.drawImageWithClosure(size: image.size) { (size: CGSize, context: CGContext) -> () in
                 
@@ -291,7 +291,7 @@ public class Toucan : NSObject {
                 CGContextScaleCTM(context, 1, -1)
                 CGContextTranslateCTM(context, 0, -size.height)
                 
-                CGContextDrawImage(context, CGRect(x: 0, y: 0, width: size.width, height: size.height), masked);
+                CGContextDrawImage(context, CGRect(x: 0, y: 0, width: size.width, height: size.height), masked!);
             }
         }
         
@@ -533,23 +533,23 @@ public class Toucan : NSObject {
             switch (image.imageOrientation) {
                 case UIImageOrientation.Left, UIImageOrientation.LeftMirrored,
                      UIImageOrientation.Right, UIImageOrientation.RightMirrored:
-                    contextWidth = CGImageGetHeight(image.CGImage)
-                    contextHeight = CGImageGetWidth(image.CGImage)
+                    contextWidth = CGImageGetHeight(image.CGImage!)
+                    contextHeight = CGImageGetWidth(image.CGImage!)
                     break
                 default:
-                    contextWidth = CGImageGetWidth(image.CGImage)
-                    contextHeight = CGImageGetHeight(image.CGImage)
+                    contextWidth = CGImageGetWidth(image.CGImage!)
+                    contextHeight = CGImageGetHeight(image.CGImage!)
                     break
             }
 
             let context : CGContextRef = CGBitmapContextCreate(nil, contextWidth, contextHeight,
-                CGImageGetBitsPerComponent(image.CGImage),
-                CGImageGetBytesPerRow(image.CGImage),
-                CGImageGetColorSpace(image.CGImage),
-                CGImageGetBitmapInfo(image.CGImage).rawValue)!;
+                CGImageGetBitsPerComponent(image.CGImage!),
+                CGImageGetBytesPerRow(image.CGImage!),
+                CGImageGetColorSpace(image.CGImage!)!,
+                CGImageGetBitmapInfo(image.CGImage!).rawValue)!;
             
             CGContextConcatCTM(context, transform);
-            CGContextDrawImage(context, CGRectMake(0, 0, CGFloat(contextWidth), CGFloat(contextHeight)), image.CGImage);
+            CGContextDrawImage(context, CGRectMake(0, 0, CGFloat(contextWidth), CGFloat(contextHeight)), image.CGImage!);
             
             let cgImage = CGBitmapContextCreateImage(context);
             return cgImage!;
@@ -596,7 +596,7 @@ public class Toucan : NSObject {
         static func drawImageWithClosure(size size: CGSize!, closure: (size: CGSize, context: CGContext) -> ()) -> UIImage {
             UIGraphicsBeginImageContextWithOptions(size, false, 0)
             closure(size: size, context: UIGraphicsGetCurrentContext()!)
-            let image : UIImage = UIGraphicsGetImageFromCurrentImageContext()
+            let image : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
             UIGraphicsEndImageContext()
             return image
         }
