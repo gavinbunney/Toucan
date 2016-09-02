@@ -25,34 +25,34 @@ import Toucan
 class ResizeTests : ToucanTestCase {
     
     func testResizePortraitClipped() {
-        let resized = Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Clip).image
+        let resized = Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.clip).image
         XCTAssertEqual(resized.size.width, CGFloat(500), "Verify width equal")
         XCTAssertEqual(resized.size.height, CGFloat(678), "Verify height clipped, so not equal")
     }
     
     func testResizeLandscapeClipped() {
-        let resized = Toucan(image: landscapeImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Clip).image
+        let resized = Toucan(image: landscapeImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.clip).image
         XCTAssertEqual(resized.size.width, CGFloat(747), "Verify width clipped, so not equal")
         XCTAssertEqual(resized.size.height, CGFloat(500), "Verify height equal")
     }
     
     func testResizePortraitCropped() {
-        let resized = Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Crop).image
+        let resized = Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.crop).image
         XCTAssertEqual(resized.size, CGSize(width: 500, height: 500), "Verify size equal")
     }
     
     func testResizeLandscapeCropped() {
-        let resized = Toucan(image: landscapeImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Crop).image
+        let resized = Toucan(image: landscapeImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.crop).image
         XCTAssertEqual(resized.size, CGSize(width: 500, height: 500), "Verify size equal")
     }
     
     func testResizePortraitScaled() {
-        let resized = Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Scale).image
+        let resized = Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.scale).image
         XCTAssertEqual(resized.size, CGSize(width: 500, height: 500), "Verify size equal")
     }
     
     func testResizeLandscapeScaled() {
-        let resized = Toucan(image: landscapeImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Scale).image
+        let resized = Toucan(image: landscapeImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.scale).image
         XCTAssertEqual(resized.size, CGSize(width: 500, height: 500), "Verify size equal")
     }
 }
