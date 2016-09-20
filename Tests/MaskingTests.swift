@@ -36,12 +36,12 @@ class MaskingTests : ToucanTestCase {
     
     func testMaskWithPath() {
         let path = UIBezierPath()
-        path.moveToPoint(CGPointMake(0, 50))
-        path.addLineToPoint(CGPointMake(50, 0))
-        path.addLineToPoint(CGPointMake(100, 50))
-        path.addLineToPoint(CGPointMake(50, 100))
-        path.closePath()
-        let masked2 = Toucan(image: landscapeImage).resize(CGSizeMake(300, 250), fitMode: Toucan.Resize.FitMode.Scale).maskWithPath(path: path).image
+        path.move(to: CGPoint(x: 0, y: 50))
+        path.addLine(to: CGPoint(x: 50, y: 0))
+        path.addLine(to: CGPoint(x: 100, y: 50))
+        path.addLine(to: CGPoint(x: 50, y: 100))
+        path.close()
+        let masked2 = Toucan(image: landscapeImage).resize(CGSize(width: 300, height: 250), fitMode: Toucan.Resize.FitMode.scale).maskWithPath(path: path).image
         
         let cornerRGBA = getPixelRGBA(masked2, point: CGPoint(x: 0, y: 0))
         XCTAssertEqual(cornerRGBA.alpha, 0.0 as CGFloat, "Check corner is transparent")
