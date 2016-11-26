@@ -24,29 +24,29 @@ import XCTest
 class ToucanTestCase : XCTestCase {
 
     internal var portraitImage : UIImage {
-        let imageData = NSData(contentsOfURL: NSBundle(forClass: ToucanTestCase.self).URLForResource("Portrait", withExtension: "jpg")!)
+        let imageData = try? Data(contentsOf: Bundle(for: ToucanTestCase.self).url(forResource: "Portrait", withExtension: "jpg")!)
         let image = UIImage(data: imageData!)
         XCTAssertEqual(image!.size, CGSize(width: 1593, height: 2161), "Verify portrait image size")
         return image!
     }
     
     internal var landscapeImage : UIImage {
-        let imageData = NSData(contentsOfURL: NSBundle(forClass: ToucanTestCase.self).URLForResource("Landscape", withExtension: "jpg")!)
+        let imageData = try? Data(contentsOf: Bundle(for: ToucanTestCase.self).url(forResource: "Landscape", withExtension: "jpg")!)
         let image = UIImage(data: imageData!)
         XCTAssertEqual(image!.size, CGSize(width: 3872, height: 2592), "Verify landscape image size")
         return image!
     }
 
-    internal func getPixelRGBA(image: UIImage, point: CGPoint) -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
-        let pixelData : CFDataRef = CGDataProviderCopyData(CGImageGetDataProvider(image.CGImage))!
+    internal func getPixelRGBA(_ image: UIImage, point: CGPoint) -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        let pixelData : CFData = image.cgImage!.dataProvider!.data!
         let data  = CFDataGetBytePtr(pixelData)
         
         let pixelInfo = Int(((image.size.width * point.y) + point.x ) * 4)
         
-        let red = CGFloat(data[pixelInfo])
-        let green = CGFloat(data[pixelInfo + 1])
-        let blue = CGFloat(data[pixelInfo + 2])
-        let alpha = CGFloat(data[pixelInfo + 3])
+        let red = CGFloat((data?[pixelInfo])!)
+        let green = CGFloat((data?[pixelInfo + 1])!)
+        let blue = CGFloat((data?[pixelInfo + 2])!)
+        let alpha = CGFloat((data?[pixelInfo + 3])!)
         
         return (red, green, blue, alpha)
     }
