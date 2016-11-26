@@ -39,14 +39,14 @@ class ToucanTestCase : XCTestCase {
 
     internal func getPixelRGBA(_ image: UIImage, point: CGPoint) -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         let pixelData : CFData = image.cgImage!.dataProvider!.data!
-        let data  = CFDataGetBytePtr(pixelData)
+        let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
         
-        let pixelInfo = Int(((image.size.width * point.y) + point.x ) * 4)
+        let pixelInfo: Int = ((image.cgImage!.width * Int(point.y)) + Int(point.x)) * 4
         
-        let red = CGFloat((data?[pixelInfo])!)
-        let green = CGFloat((data?[pixelInfo + 1])!)
-        let blue = CGFloat((data?[pixelInfo + 2])!)
-        let alpha = CGFloat((data?[pixelInfo + 3])!)
+        let red = CGFloat((data[pixelInfo]))
+        let green = CGFloat((data[pixelInfo + 1]))
+        let blue = CGFloat((data[pixelInfo + 2]))
+        let alpha = CGFloat((data[pixelInfo + 3]))
         
         return (red, green, blue, alpha)
     }
