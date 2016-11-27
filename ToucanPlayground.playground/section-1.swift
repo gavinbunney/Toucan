@@ -39,19 +39,19 @@ let octagonMask = UIImage(named: "OctagonMask.png")
 // ------------------------------------------------------------
 
 // Crop will resize to fit one dimension, then crop the other
-Toucan(image: portraitImage!).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Crop).image
+Toucan(image: portraitImage!).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.crop).image
 
 // Clip will resize so one dimension is equal to the size, the other shrunk down to retain aspect ratio
-Toucan(image: portraitImage!).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Clip).image
+Toucan(image: portraitImage!).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.clip).image
 
 // Scale will resize so the image fits exactly, altering the aspect ratio
-Toucan(image: portraitImage!).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Scale).image
+Toucan(image: portraitImage!).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.scale).image
 
 // ------------------------------------------------------------
 // Masking
 // ------------------------------------------------------------
 
-let landscapeCropped = Toucan(image: landscapeImage!).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Crop).image
+let landscapeCropped = Toucan(image: landscapeImage!).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.crop).image
 
 // We can mask with an ellipse!
 Toucan(image: landscapeImage!).maskWithEllipse().image
@@ -60,24 +60,24 @@ Toucan(image: landscapeImage!).maskWithEllipse().image
 Toucan(image: landscapeCropped).maskWithEllipse().image
 
 // Mask with borders too!
-Toucan(image: landscapeCropped).maskWithEllipse(borderWidth: 10, borderColor: UIColor.yellowColor()).image
+Toucan(image: landscapeCropped).maskWithEllipse(borderWidth: 10, borderColor: UIColor.yellow).image
 
 // Rounded Rects are all in style
 Toucan(image: landscapeCropped).maskWithRoundedRect(cornerRadius: 30).image
 
 // And can be fancy with borders
-Toucan(image: landscapeCropped).maskWithRoundedRect(cornerRadius: 30, borderWidth: 10, borderColor: UIColor.purpleColor()).image
+Toucan(image: landscapeCropped).maskWithRoundedRect(cornerRadius: 30, borderWidth: 10, borderColor: UIColor.purple).image
 
 // Masking with an custom image mask
 Toucan(image: landscapeCropped).maskWithImage(maskImage: octagonMask!).image
 
 //testing the path stuff
 let path = UIBezierPath()
-path.moveToPoint(CGPointMake(0, 50))
-path.addLineToPoint(CGPointMake(50, 0))
-path.addLineToPoint(CGPointMake(100, 50))
-path.addLineToPoint(CGPointMake(50, 100))
-path.closePath()
+path.move(to: CGPoint(x: 0, y: 50))
+path.addLine(to: CGPoint(x: 50, y: 0))
+path.addLine(to: CGPoint(x: 100, y: 50))
+path.addLine(to: CGPoint(x: 50, y: 100))
+path.close()
 Toucan(image: landscapeCropped).maskWithPath(path: path).image
 
 Toucan(image: landscapeCropped).maskWithPathClosure(path: {(rect) -> (UIBezierPath) in
@@ -90,6 +90,6 @@ Toucan(image: landscapeCropped).maskWithPathClosure(path: {(rect) -> (UIBezierPa
 // ------------------------------------------------------------
 
 // We can draw ontop of another image
-Toucan(image: portraitImage!).layerWithOverlayImage(octagonMask!, overlayFrame: CGRectMake(450, 400, 200, 200)).image
+Toucan(image: portraitImage!).layerWithOverlayImage(octagonMask!, overlayFrame: CGRect(x: 450, y: 400, width: 200, height: 200)).image
 
 
