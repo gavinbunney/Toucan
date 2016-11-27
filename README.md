@@ -13,21 +13,12 @@ Toucan is a Swift library that provides a clean, quick API for processing images
 - Mask with custom images
 - Chainable image processing stages
 
-### Planned for 1.0 Release ###
-
-- 100% Unit Test Coverage - once image loading in XCTests are fixed!
-- Add crop options for crop location & faces
-- Add enhancement filters to beautify images
-- Add stylize filters
-- Add rotation and flip support
-- Lazy evaluation of image contexts to prevent having to create and close multiple contexts during method chaining
-
 ## Requirements ##
 
-- Xcode 7.2
+- Xcode 8.1
 - iOS 8.0+
 
-*As of version 0.4, Toucan only supports Swift 2. Use version 0.3.x for the latest Swift 1.2 compatible release*
+*As of version 0.6, Toucan only supports Swift 3.*
 
 ## Setup ##
 
@@ -68,8 +59,8 @@ FitMode drives the resizing process to determine what to do with an image to mak
 Example | Mode
 ---- | ---------
 ![Clip](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Resize-Clip.jpg)|**Clip Mode**<br/>`Toucan.Resize.FitMode.Clip`<br/>Resizes the image to fit within the width and height boundaries without cropping or distorting the image.<br/><br/>`Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Clip).image`
-![Crop](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Resize-Crop.jpg)|**Crop Mode**<br/>`Toucan.Resize.FitMode.Crop`<br/>Resizes the image to fill the width and height boundaries and crops any excess image data.<br/><br/>`Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Crop).image`
-![Scale](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Resize-Scale.jpg)|**Scale Mode**<br/>`Toucan.Resize.FitMode.Scale`<br/>Scales the image to fit the constraining dimensions exactly.<br/><br/>`Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Scale).image`
+![Crop](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Resize-Crop.jpg)|**Crop Mode**<br/>`Toucan.Resize.FitMode.crop`<br/>Resizes the image to fill the width and height boundaries and crops any excess image data.<br/><br/>`Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Crop).image`
+![Scale](https://raw.githubusercontent.com/gavinbunney/Toucan/master/assets/examples/Resize-Scale.jpg)|**Scale Mode**<br/>`Toucan.Resize.FitMode.scale`<br/>Scales the image to fit the constraining dimensions exactly.<br/><br/>`Toucan(image: portraitImage).resize(CGSize(width: 500, height: 500), fitMode: Toucan.Resize.FitMode.Scale).image`
 
 
 ## Masking ##
