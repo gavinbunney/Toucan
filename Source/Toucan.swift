@@ -156,8 +156,8 @@ public class Toucan : NSObject {
          - returns: Resized image
          */
         public static func resizeImage(_ image: UIImage, size: CGSize, fitMode: FitMode = .clip) -> UIImage {
-            
-            let imgRef = Util.CGImageWithCorrectOrientation(image)
+            guard let imgRef = Util.CGImageWithCorrectOrientation(image) else { return UIImage() }
+
             let originalWidth  = CGFloat(imgRef.width)
             let originalHeight = CGFloat(imgRef.height)
             let widthRatio = size.width / originalWidth
@@ -272,26 +272,26 @@ public class Toucan : NSObject {
          - returns: Masked image
          */
         public static func maskImageWithImage(_ image: UIImage, maskImage: UIImage) -> UIImage {
-            
-            let imgRef = Util.CGImageWithCorrectOrientation(image)
-            let maskRef = maskImage.cgImage
-            
-            let mask = CGImage(maskWidth: (maskRef?.width)!,
-                               height: (maskRef?.height)!,
-                               bitsPerComponent: (maskRef?.bitsPerComponent)!,
-                               bitsPerPixel: (maskRef?.bitsPerPixel)!,
-                               bytesPerRow: (maskRef?.bytesPerRow)!,
-                               provider: (maskRef?.dataProvider!)!, decode: nil, shouldInterpolate: false);
-            
-            let masked = imgRef.masking(mask!);
+            guard let imgRef = Util.CGImageWithCorrectOrientation(image),
+                let maskRef = maskImage.cgImage,
+                let dataProvider = maskRef.dataProvider,
+                let mask = CGImage(maskWidth: maskRef.width,
+                                   height: maskRef.height,
+                                   bitsPerComponent: maskRef.bitsPerComponent,
+                                   bitsPerPixel: maskRef.bitsPerPixel,
+                                   bytesPerRow: maskRef.bytesPerRow,
+                                   provider: dataProvider, decode: nil, shouldInterpolate: false),
+                let masked = imgRef.masking(mask) else {
+                    return UIImage()
+            }
             
             return Util.drawImageWithClosure(size: image.size) { (size: CGSize, context: CGContext) -> () in
                 
                 // need to flip the transform matrix, CoreGraphics has (0,0) in lower left when drawing image
                 context.scaleBy(x: 1, y: -1)
                 context.translateBy(x: 0, y: -size.height)
-                
-                context.draw(masked!, in: CGRect(x: 0, y: 0, width: size.width, height: size.height));
+
+                context.draw(masked, in: CGRect(x: 0, y: 0, width: size.width, height: size.height));
             }
         }
         
@@ -308,8 +308,9 @@ public class Toucan : NSObject {
          */
         public static func maskImageWithEllipse(_ image: UIImage,
                                                 borderWidth: CGFloat = 0, borderColor: UIColor = UIColor.white) -> UIImage {
-            
-            let imgRef = Util.CGImageWithCorrectOrientation(image)
+
+            guard let imgRef = Util.CGImageWithCorrectOrientation(image) else { return UIImage() }
+
             let size = CGSize(width: CGFloat(imgRef.width) / image.scale, height: CGFloat(imgRef.height) / image.scale)
             
             return Util.drawImageWithClosure(size: size) { (size: CGSize, context: CGContext) -> () in
@@ -342,8 +343,9 @@ public class Toucan : NSObject {
          */
         public static func maskImageWithPath(_ image: UIImage,
                                              path: UIBezierPath) -> UIImage {
+
+            guard let imgRef = Util.CGImageWithCorrectOrientation(image) else { return UIImage() }
             
-            let imgRef = Util.CGImageWithCorrectOrientation(image)
             let size = CGSize(width: CGFloat(imgRef.width) / image.scale, height: CGFloat(imgRef.height) / image.scale)
             
             return Util.drawImageWithClosure(size: size) { (size: CGSize, context: CGContext) -> () in
@@ -384,8 +386,8 @@ public class Toucan : NSObject {
          */
         public static func maskImageWithPathClosure(_ image: UIImage,
                                                     pathInRect:(_ rect: CGRect) -> (UIBezierPath)) -> UIImage {
-            
-            let imgRef = Util.CGImageWithCorrectOrientation(image)
+
+            guard let imgRef = Util.CGImageWithCorrectOrientation(image) else { return UIImage() }
             let size = CGSize(width: CGFloat(imgRef.width) / image.scale, height: CGFloat(imgRef.height) / image.scale)
             
             return maskImageWithPath(image, path: pathInRect(CGRect(x: 0, y: 0, width: size.width, height: size.height)))
@@ -404,8 +406,9 @@ public class Toucan : NSObject {
          */
         public static func maskImageWithRoundedRect(_ image: UIImage, cornerRadius: CGFloat,
                                                     borderWidth: CGFloat = 0, borderColor: UIColor = UIColor.white) -> UIImage {
-            
-            let imgRef = Util.CGImageWithCorrectOrientation(image)
+
+            guard let imgRef = Util.CGImageWithCorrectOrientation(image) else { return UIImage() }
+
             let size = CGSize(width: CGFloat(imgRef.width) / image.scale, height: CGFloat(imgRef.height) / image.scale)
             
             return Util.drawImageWithClosure(size: size) { (size: CGSize, context: CGContext) -> () in
@@ -461,8 +464,9 @@ public class Toucan : NSObject {
          - returns: Masked image
          */
         public static func overlayImage(_ image: UIImage, overlayImage: UIImage, overlayFrame: CGRect) -> UIImage {
-            
-            let imgRef = Util.CGImageWithCorrectOrientation(image)
+
+            guard let imgRef = Util.CGImageWithCorrectOrientation(image) else { return UIImage() }
+
             let size = CGSize(width: CGFloat(imgRef.width) / image.scale, height: CGFloat(imgRef.height) / image.scale)
             
             return Util.drawImageWithClosure(size: size) { (size: CGSize, context: CGContext) -> () in
@@ -489,10 +493,11 @@ public class Toucan : NSObject {
          
          - returns: CGImageRef with rotated/transformed image context
          */
-        static func CGImageWithCorrectOrientation(_ image : UIImage) -> CGImage {
-            
+        static func CGImageWithCorrectOrientation(_ image : UIImage) -> CGImage? {
+            guard let cgImage = image.cgImage else { return nil }
+
             if (image.imageOrientation == UIImageOrientation.up) {
-                return image.cgImage!
+                return cgImage
             }
             
             var transform : CGAffineTransform = CGAffineTransform.identity;
@@ -533,26 +538,30 @@ public class Toucan : NSObject {
             switch (image.imageOrientation) {
             case UIImageOrientation.left, UIImageOrientation.leftMirrored,
                  UIImageOrientation.right, UIImageOrientation.rightMirrored:
-                contextWidth = (image.cgImage?.height)!
-                contextHeight = (image.cgImage?.width)!
+                contextWidth = cgImage.height
+                contextHeight = cgImage.width
                 break
             default:
-                contextWidth = (image.cgImage?.width)!
-                contextHeight = (image.cgImage?.height)!
+                contextWidth = cgImage.width
+                contextHeight = cgImage.height
                 break
             }
-            
-            let context : CGContext = CGContext(data: nil, width: contextWidth, height: contextHeight,
-                                                bitsPerComponent: image.cgImage!.bitsPerComponent,
-                                                bytesPerRow: image.cgImage!.bytesPerRow,
-                                                space: image.cgImage!.colorSpace!,
-                                                bitmapInfo: image.cgImage!.bitmapInfo.rawValue)!;
-            
+
+            guard let colorSpace = cgImage.colorSpace,
+                let context = CGContext(data: nil,
+                                        width: contextWidth,
+                                        height: contextHeight,
+                                        bitsPerComponent: cgImage.bitsPerComponent,
+                                        bytesPerRow: cgImage.bytesPerRow,
+                                        space: colorSpace,
+                                        bitmapInfo: cgImage.bitmapInfo.rawValue) else {
+                                            return nil
+            }
+
             context.concatenate(transform);
-            context.draw(image.cgImage!, in: CGRect(x: 0, y: 0, width: CGFloat(contextWidth), height: CGFloat(contextHeight)));
-            
-            let cgImage = context.makeImage();
-            return cgImage!;
+            context.draw(cgImage, in: CGRect(x: 0, y: 0, width: CGFloat(contextWidth), height: CGFloat(contextHeight)));
+
+            return context.makeImage()
         }
         
         /**
