@@ -500,15 +500,15 @@ public class Toucan : NSObject {
             switch (image.imageOrientation) {
             case UIImageOrientation.right, UIImageOrientation.rightMirrored:
                 transform = transform.translatedBy(x: 0, y: image.size.height)
-                transform = transform.rotated(by: CGFloat(-1.0 * M_PI_2))
+                transform = transform.rotated(by: -CGFloat.pi / 2)
                 break
             case UIImageOrientation.left, UIImageOrientation.leftMirrored:
                 transform = transform.translatedBy(x: image.size.width, y: 0)
-                transform = transform.rotated(by: CGFloat(M_PI_2))
+                transform = transform.rotated(by: CGFloat.pi / 2)
                 break
             case UIImageOrientation.down, UIImageOrientation.downMirrored:
                 transform = transform.translatedBy(x: image.size.width, y: image.size.height)
-                transform = transform.rotated(by: CGFloat(M_PI))
+                transform = transform.rotated(by: CGFloat.pi)
                 break
             default:
                 break
