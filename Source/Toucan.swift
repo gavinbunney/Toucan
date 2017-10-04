@@ -544,7 +544,7 @@ public class Toucan : NSObject {
             
             let context : CGContext = CGContext(data: nil, width: contextWidth, height: contextHeight,
                                                 bitsPerComponent: image.cgImage!.bitsPerComponent,
-                                                bytesPerRow: image.cgImage!.bytesPerRow,
+                                                bytesPerRow: 0,
                                                 space: image.cgImage!.colorSpace!,
                                                 bitmapInfo: image.cgImage!.bitmapInfo.rawValue)!;
             
