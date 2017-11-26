@@ -163,7 +163,7 @@ public class Toucan : NSObject {
             let widthRatio = size.width / originalWidth
             let heightRatio = size.height / originalHeight
             
-            let scaleRatio = widthRatio > heightRatio ? widthRatio : heightRatio
+            let scaleRatio = fitMode == .clip ? min(heightRatio, widthRatio) : max(heightRatio, widthRatio)
             
             let resizedImageBounds = CGRect(x: 0, y: 0, width: round(originalWidth * scaleRatio), height: round(originalHeight * scaleRatio))
             let resizedImage = Util.drawImageInBounds(image, bounds: resizedImageBounds)
