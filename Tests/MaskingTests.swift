@@ -25,7 +25,7 @@ import Toucan
 class MaskingTests : ToucanTestCase {
 
     func testMaskWithEllipse() {
-        let masked = Toucan(image: landscapeImage).maskWithEllipse().image
+        let masked = Toucan(image: landscapeImage).maskWithEllipse().image!
         
         let cornerRGBA = getPixelRGBA(masked, point: CGPoint(x: 0, y: 0))
         XCTAssertEqual(cornerRGBA.alpha, 0.0 as CGFloat, "Check corner is transparent")
@@ -41,7 +41,7 @@ class MaskingTests : ToucanTestCase {
         path.addLine(to: CGPoint(x: 100, y: 50))
         path.addLine(to: CGPoint(x: 50, y: 100))
         path.close()
-        let masked2 = Toucan(image: landscapeImage).resize(CGSize(width: 300, height: 250), fitMode: Toucan.Resize.FitMode.scale).maskWithPath(path: path).image
+        let masked2 = Toucan(image: landscapeImage).resize(CGSize(width: 300, height: 250), fitMode: Toucan.Resize.FitMode.scale).maskWithPath(path: path).image!
         
         let cornerRGBA = getPixelRGBA(masked2, point: CGPoint(x: 0, y: 0))
         XCTAssertEqual(cornerRGBA.alpha, 0.0 as CGFloat, "Check corner is transparent")
