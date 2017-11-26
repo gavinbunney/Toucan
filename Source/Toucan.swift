@@ -1,6 +1,6 @@
 // Toucan.swift
 //
-// Copyright (c) 2014-2016 Gavin Bunney, Simple Labs (http://thesimplelab.co)
+// Copyright (c) 2014-2017 Gavin Bunney, Bunney Apps (http://bunney.net.au)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -500,15 +500,15 @@ public class Toucan : NSObject {
             switch (image.imageOrientation) {
             case UIImageOrientation.right, UIImageOrientation.rightMirrored:
                 transform = transform.translatedBy(x: 0, y: image.size.height)
-                transform = transform.rotated(by: CGFloat(-1.0 * M_PI_2))
+                transform = transform.rotated(by: .pi / -2.0)
                 break
             case UIImageOrientation.left, UIImageOrientation.leftMirrored:
                 transform = transform.translatedBy(x: image.size.width, y: 0)
-                transform = transform.rotated(by: CGFloat(M_PI_2))
+                transform = transform.rotated(by: .pi / 2.0)
                 break
             case UIImageOrientation.down, UIImageOrientation.downMirrored:
                 transform = transform.translatedBy(x: image.size.width, y: image.size.height)
-                transform = transform.rotated(by: CGFloat(M_PI))
+                transform = transform.rotated(by: .pi)
                 break
             default:
                 break
