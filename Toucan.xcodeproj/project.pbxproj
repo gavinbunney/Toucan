@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -231,7 +231,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0910;
-				ORGANIZATIONNAME = "Simple Labs";
+				ORGANIZATIONNAME = "Gavin Bunney";
 				TargetAttributes = {
 					740AC3E91999799900AB9A86 = {
 						CreatedOnToolsVersion = 6.0;
@@ -248,7 +248,7 @@
 				};
 			};
 			buildConfigurationList = 740AC3E41999799900AB9A86 /* Build configuration list for PBXProject "Toucan" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -452,7 +452,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = co.thesimplelab.Toucan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.gavinbunney.Toucan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -475,7 +475,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = co.thesimplelab.Toucan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.gavinbunney.Toucan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -529,7 +529,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Source/tvOS/Toucan.tvOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = co.thesimplelab.Toucan.tvOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.gavinbunney.Toucan.tvOS;
 				PRODUCT_NAME = Toucan;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
@@ -556,7 +556,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Source/tvOS/Toucan.tvOS-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = co.thesimplelab.Toucan.tvOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.gavinbunney.Toucan.tvOS;
 				PRODUCT_NAME = Toucan;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
