@@ -15,10 +15,8 @@ Toucan is a Swift library that provides a clean, quick API for processing images
 
 ## Requirements ##
 
-- Xcode 9.1
+- Xcode 10.0+
 - iOS 11.0+
-
-*As of version 0.7, Toucan only supports Swift 4.*
 
 ## Setup ##
 
