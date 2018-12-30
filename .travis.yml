@@ -1,9 +1,9 @@
 language: objective-c
-osx_image: xcode9.1
+osx_image: xcode10.1
 before_install:
 - gem install xcpretty
 script:
 - set -o pipefail
 
-- xcodebuild -project Toucan.xcodeproj -scheme "Toucan" test -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 6s" ONLY_ACTIVE_ARCH=NO | xcpretty -c
+- xcodebuild -project Toucan.xcodeproj -scheme "Toucan" test -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone XS" ONLY_ACTIVE_ARCH=NO | xcpretty -c
 - xcodebuild -project Toucan.xcodeproj -scheme "Toucan.tvOS" build -destination "platform=tvOS Simulator,name=Apple TV" ONLY_ACTIVE_ARCH=NO | xcpretty -c

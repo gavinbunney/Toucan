@@ -1,6 +1,6 @@
 // Toucan.swift
 //
-// Copyright (c) 2014-2017 Gavin Bunney
+// Copyright (c) 2014-2019 Gavin Bunney
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,6 +36,12 @@ import CoreGraphics
  let resizedAndMaskedImage = Toucan(withImage: myImage).resize(CGSize(width: 100, height: 150)).maskWithEllipse().image
  */
 public class Toucan : NSObject {
+    
+    #if swift(>=4.2)
+    internal typealias ImageOrientation = UIImage.Orientation
+    #else
+    internal typealias ImageOrientation = UIImageOrientation
+    #endif
     
     public var image : UIImage?
     
@@ -306,13 +312,18 @@ public class Toucan : NSObject {
             
             let masked = imgRef.masking(mask!);
             
-            return Util.drawImageWithClosure(size: image.size, scale: image.scale) { (size: CGSize, context: CGContext) -> () in
+            return Util.drawImageWithClosure(size: image.size, scale: image.scale) { (size: CGSize, context: CGContext) -> UIImage? in
                 
                 // need to flip the transform matrix, CoreGraphics has (0,0) in lower left when drawing image
                 context.scaleBy(x: 1, y: -1)
                 context.translateBy(x: 0, y: -size.height)
                 
                 context.draw(masked!, in: CGRect(x: 0, y: 0, width: size.width, height: size.height));
+                
+                let image : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+                UIGraphicsEndImageContext()
+
+                return image
             }
         }
         
@@ -333,7 +344,7 @@ public class Toucan : NSObject {
             let imgRef = Util.CGImageWithCorrectOrientation(image)
             let size = CGSize(width: CGFloat(imgRef.width) / image.scale, height: CGFloat(imgRef.height) / image.scale)
             
-            return Util.drawImageWithClosure(size: size, scale: image.scale) { (size: CGSize, context: CGContext) -> () in
+            return Util.drawImageWithClosure(size: size, scale: image.scale) { (size: CGSize, context: CGContext) -> UIImage? in
                 
                 let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
                 
@@ -350,6 +361,11 @@ public class Toucan : NSObject {
                                                   height: size.height - borderWidth));
                     context.strokePath();
                 }
+                
+                let image : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+                UIGraphicsEndImageContext()
+
+                return image
             }
         }
         
@@ -367,7 +383,7 @@ public class Toucan : NSObject {
             let imgRef = Util.CGImageWithCorrectOrientation(image)
             let size = CGSize(width: CGFloat(imgRef.width) / image.scale, height: CGFloat(imgRef.height) / image.scale)
             
-            return Util.drawImageWithClosure(size: size, scale: image.scale) { (size: CGSize, context: CGContext) -> () in
+            return Util.drawImageWithClosure(size: size, scale: image.scale) { (size: CGSize, context: CGContext) -> UIImage? in
                 
                 let boundSize = path.bounds.size
                 
@@ -392,6 +408,11 @@ public class Toucan : NSObject {
                 context.addPath(path.cgPath)
                 context.clip()
                 image.draw(in: rect)
+              
+                let image : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+                UIGraphicsEndImageContext()
+
+                return image
             }
         }
         
@@ -429,7 +450,7 @@ public class Toucan : NSObject {
             let imgRef = Util.CGImageWithCorrectOrientation(image)
             let size = CGSize(width: CGFloat(imgRef.width) / image.scale, height: CGFloat(imgRef.height) / image.scale)
             
-            return Util.drawImageWithClosure(size: size, scale: image.scale) { (size: CGSize, context: CGContext) -> () in
+            return Util.drawImageWithClosure(size: size, scale: image.scale) { (size: CGSize, context: CGContext) -> UIImage? in
                 
                 let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
                 
@@ -447,6 +468,11 @@ public class Toucan : NSObject {
                     borderPath.lineWidth = borderWidth * 2
                     borderPath.stroke()
                 }
+              
+                let image : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+                UIGraphicsEndImageContext()
+
+                return image
             }
         }
     }
@@ -487,12 +513,17 @@ public class Toucan : NSObject {
             let imgRef = Util.CGImageWithCorrectOrientation(image)
             let size = CGSize(width: CGFloat(imgRef.width) / image.scale, height: CGFloat(imgRef.height) / image.scale)
             
-            return Util.drawImageWithClosure(size: size, scale: image.scale) { (size: CGSize, context: CGContext) -> () in
+            return Util.drawImageWithClosure(size: size, scale: image.scale) { (size: CGSize, context: CGContext) -> UIImage? in
                 
                 let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
                 
                 image.draw(in: rect)
                 overlayImage.draw(in: overlayFrame);
+              
+                let image : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+                UIGraphicsEndImageContext()
+
+                return image
             }
         }
     }
@@ -513,22 +544,22 @@ public class Toucan : NSObject {
          */
         static func CGImageWithCorrectOrientation(_ image : UIImage) -> CGImage {
             
-            if (image.imageOrientation == UIImageOrientation.up) {
+            if (image.imageOrientation == ImageOrientation.up) {
                 return image.cgImage!
             }
             
             var transform : CGAffineTransform = CGAffineTransform.identity;
             
             switch (image.imageOrientation) {
-            case UIImageOrientation.right, UIImageOrientation.rightMirrored:
+            case ImageOrientation.right, ImageOrientation.rightMirrored:
                 transform = transform.translatedBy(x: 0, y: image.size.height)
                 transform = transform.rotated(by: .pi / -2.0)
                 break
-            case UIImageOrientation.left, UIImageOrientation.leftMirrored:
+            case ImageOrientation.left, ImageOrientation.leftMirrored:
                 transform = transform.translatedBy(x: image.size.width, y: 0)
                 transform = transform.rotated(by: .pi / 2.0)
                 break
-            case UIImageOrientation.down, UIImageOrientation.downMirrored:
+            case ImageOrientation.down, ImageOrientation.downMirrored:
                 transform = transform.translatedBy(x: image.size.width, y: image.size.height)
                 transform = transform.rotated(by: .pi)
                 break
@@ -537,11 +568,11 @@ public class Toucan : NSObject {
             }
             
             switch (image.imageOrientation) {
-            case UIImageOrientation.rightMirrored, UIImageOrientation.leftMirrored:
+            case ImageOrientation.rightMirrored, ImageOrientation.leftMirrored:
                 transform = transform.translatedBy(x: image.size.height, y: 0);
                 transform = transform.scaledBy(x: -1, y: 1);
                 break
-            case UIImageOrientation.downMirrored, UIImageOrientation.upMirrored:
+            case ImageOrientation.downMirrored, ImageOrientation.upMirrored:
                 transform = transform.translatedBy(x: image.size.width, y: 0);
                 transform = transform.scaledBy(x: -1, y: 1);
                 break
@@ -553,8 +584,8 @@ public class Toucan : NSObject {
             let contextHeight : Int
             
             switch (image.imageOrientation) {
-            case UIImageOrientation.left, UIImageOrientation.leftMirrored,
-                 UIImageOrientation.right, UIImageOrientation.rightMirrored:
+            case ImageOrientation.left, ImageOrientation.leftMirrored,
+                 ImageOrientation.right, ImageOrientation.rightMirrored:
                 contextWidth = (image.cgImage?.height)!
                 contextHeight = (image.cgImage?.width)!
                 break
@@ -586,8 +617,13 @@ public class Toucan : NSObject {
          - returns: Resized image within bounds
          */
         static func drawImageInBounds(_ image: UIImage, bounds : CGRect) -> UIImage? {
-            return drawImageWithClosure(size: bounds.size, scale: image.scale) { (size: CGSize, context: CGContext) -> () in
+            return drawImageWithClosure(size: bounds.size, scale: image.scale) { (size: CGSize, context: CGContext) -> UIImage? in
                 image.draw(in: bounds)
+              
+                let image : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+                UIGraphicsEndImageContext()
+
+                return image
             };
         }
         
@@ -600,10 +636,15 @@ public class Toucan : NSObject {
          - returns: Resized and cropped image
          */
         static func croppedImageWithRect(_ image: UIImage, rect: CGRect) -> UIImage? {
-            return drawImageWithClosure(size: rect.size, scale: image.scale) { (size: CGSize, context: CGContext) -> () in
+            return drawImageWithClosure(size: rect.size, scale: image.scale) { (size: CGSize, context: CGContext) -> UIImage? in
                 let drawRect = CGRect(x: -rect.origin.x, y: -rect.origin.y, width: image.size.width, height: image.size.height)
                 context.clip(to: CGRect(x: 0, y: 0, width: rect.size.width, height: rect.size.height))
                 image.draw(in: drawRect)
+              
+                let image : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+                UIGraphicsEndImageContext()
+
+                return image
             };
         }
         
@@ -615,8 +656,8 @@ public class Toucan : NSObject {
          
          - returns: Image pulled from the end of the closure
          */
-        static func drawImageWithClosure(size: CGSize!, scale: CGFloat, closure: (_ size: CGSize, _ context: CGContext) -> ()) -> UIImage? {
-            
+        static func drawImageWithClosure(size: CGSize!, scale: CGFloat, closure: @escaping (_ size: CGSize, _ context: CGContext) -> UIImage?) -> UIImage? {
+
             guard size.width > 0.0 && size.height > 0.0 else {
                 print("WARNING: Invalid size requested: \(size.width) x \(size.height) - must not be 0.0 in any dimension")
                 return nil
@@ -627,11 +668,8 @@ public class Toucan : NSObject {
                 print("WARNING: Graphics context is nil!")
                 return nil
             }
-            
-            closure(size, context)
-            let image : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-            UIGraphicsEndImageContext()
-            return image
+          
+            return closure(size, context)
         }
     }
 }

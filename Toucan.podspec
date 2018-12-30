@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'Toucan'
-  s.version = '1.0.0'
+  s.version = '1.1.0'
   s.license = 'MIT'
   s.summary = 'Fabulous Image Processing in Swift'
   s.homepage = 'https://github.com/gavinbunney/Toucan'
@@ -12,6 +12,7 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = '9.0'
 
   s.source_files = 'Source/*.swift'
-
+  s.swift_version = '4.0'
+  
   s.requires_arc = true
 end
