@@ -23,11 +23,13 @@ let package = Package(
         .target(
             name: "Toucan",
             dependencies: [],
-            path: "Sources"),
+            path: "Sources",
+            exclude: ["Toucan-Info.plist", "tvOS/Toucan.tvOS-Info.plist"]),
         .testTarget(
             name: "ToucanTests",
             dependencies: ["Toucan"],
             path: "Tests",
+            exclude: ["Info.plist"],
             resources: [
                 .process("Assets")
             ])
