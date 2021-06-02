@@ -25,21 +25,21 @@ import XCTest
 class ToucanTestCase : XCTestCase {
 
     internal var portraitImage : UIImage {
-        let imageData = try? Data(contentsOf: Bundle(for: ToucanTestCase.self).url(forResource: "Portrait", withExtension: "jpg")!)
+        let imageData = try? Data(contentsOf: Bundle.module.url(forResource: "Portrait", withExtension: "jpg")!)
         let image = UIImage(data: imageData!)
         XCTAssertEqual(image!.size, CGSize(width: 1593, height: 2161), "Verify portrait image size")
         return image!
     }
     
     internal var landscapeImage : UIImage {
-        let imageData = try? Data(contentsOf: Bundle(for: ToucanTestCase.self).url(forResource: "Landscape", withExtension: "jpg")!)
+        let imageData = try? Data(contentsOf: Bundle.module.url(forResource: "Landscape", withExtension: "jpg")!)
         let image = UIImage(data: imageData!)
         XCTAssertEqual(image!.size, CGSize(width: 3872, height: 2592), "Verify landscape image size")
         return image!
     }
     
     internal var maskImage : UIImage {
-        let imageData = try? Data(contentsOf: Bundle(for: ToucanTestCase.self).url(forResource: "OctagonMask", withExtension: "png")!)
+        let imageData = try? Data(contentsOf: Bundle.module.url(forResource: "OctagonMask", withExtension: "png")!)
         let image = UIImage(data: imageData!)
         XCTAssertEqual(image!.size, CGSize(width: 500, height: 500), "Verify mask image size")
         return image!
