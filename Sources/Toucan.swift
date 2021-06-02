@@ -44,6 +44,18 @@ public class Toucan : NSObject {
     public init(image withImage: UIImage) {
         self.image = withImage
     }
+
+    /**
+     Image with the orientation fixed up based on EXF data.
+
+     - parameter image: Source image
+
+     - returns: Image with corrected orientation
+     */
+    public static func imageWithCorrectedOrientation(_ image: UIImage) -> UIImage {
+        let imgRef = Util.CGImageWithCorrectOrientation(image)
+        return UIImage(cgImage: imgRef)
+    }
     
     // MARK: - Resize
     
